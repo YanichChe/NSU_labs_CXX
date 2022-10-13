@@ -1,0 +1,8 @@
+set(LIBRARY_NAME comparison)
+set(LIBRARY_HEADERS_DIR include)
+set(LIBRARY_HEADERS include/comparison.h)
+set(LIBRARY_SOURCE src/comparison.cpp)
+
+add_library(${LIBRARY_NAME} STATIC ${LIBRARY_HEADERS} ${LIBRARY_SOURCE})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR})
+
