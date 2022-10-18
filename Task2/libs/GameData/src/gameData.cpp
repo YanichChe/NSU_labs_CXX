@@ -1,7 +1,7 @@
 #include "gameData.h"
 #include "../../Strategy/include/strategy.h"
 
-int GetPoint(int first, int second, int third)
+int GetPoint(Move first, Move second, Move third)
 {
     if (first == second == third == C)
     {
@@ -44,12 +44,12 @@ void GameData::ChangeTotalSum(int id, int points)
     this->totalSums[id] += points;
 }
 
-std::vector <std::vector <int>> GameData::GetMoves()
+std::vector <std::vector <Move>> GameData::GetMoves()
 {
     return this->moves;
 }
 
-void GameData::AddMove(int id, int move)
+void GameData::AddMove(int id, Move move)
 {
    this->moves[id].push_back(move);
 }
@@ -60,11 +60,11 @@ char GetMove(int move)
     return 'D';
 }
 
-void PrintInfo( std::vector<std::vector <int>> moves, std::vector <int> totalSums)
+void PrintInfo( std::vector<std::vector <Move>> moves, std::vector <int> totalSums)
 {
-    std::vector<int> movesFirst = moves[0];
-    std::vector<int> movesSecond = moves[1];
-    std::vector<int> movesThird = moves[2];
+    std::vector<Move> movesFirst = moves[0];
+    std::vector<Move> movesSecond = moves[1];
+    std::vector<Move> movesThird = moves[2];
 
     std::cout << "1 2 3    1 2 3" << std::endl;
 

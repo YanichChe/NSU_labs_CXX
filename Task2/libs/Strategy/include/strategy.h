@@ -1,10 +1,11 @@
 #include <stdlib.h>
+#include <vector>
 
-enum Moves { D = 0, C = 1};
+enum Move { D, C };
 
 class Strategy
 {
 public:
-    virtual void Algoritm();
+    virtual int Algoritm(std::vector <int> mine, std::vector <int> opponentA, std::vector <int> opponentB) = 0;
 };
 

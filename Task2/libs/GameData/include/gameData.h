@@ -8,12 +8,12 @@ class GameData
 public:
     std::vector <int> GetTotalSums();
     void ChangeTotalSum(int id, int points);
-    std::vector<std::vector <int>> GetMoves();
-    void AddMove(int id, int move);
+    std::vector<std::vector <Move>> GetMoves();
+    void AddMove(int id, Move move);
 
 private:
-    std::vector<std::vector <int>> moves;
+    std::vector<std::vector <Move>> moves;
     std::vector <int> totalSums;
 };
 
-void PrintInfo( std::vector<std::vector <int>> moves, std::vector <int> totalSums);
+void PrintInfo( std::vector<std::vector <Move>> moves, std::vector <int> totalSums);
