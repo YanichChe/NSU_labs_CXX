@@ -1,11 +1,11 @@
-#ifndef ALWAYS_COOPERATE
-#define ALWAYS_COOPERATE
+#ifndef ALWAYS_DESERT
+#define ALWAYS_DESERT
 
 #include "strategy.h"
-class AlwaysCooperate : public Strategy
+class AlwaysDesert : public Strategy
 {
 public:
-    AlwaysCooperate();
+    AlwaysDesert();
     Move Algoritm() override;
 };
 

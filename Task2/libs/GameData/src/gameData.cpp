@@ -1,5 +1,4 @@
 #include "gameData.h"
-#include "../../Strategy/include/strategy.h"
 
 int GetPoint(Move first, Move second, Move third)
 {
@@ -8,22 +7,22 @@ int GetPoint(Move first, Move second, Move third)
         return 7;
     }
 
-    else if (first == second == C && first !=third)
+    else if (first == second == C && first != third)
     {
         return 3;
     }
 
-    else if (first == C && first!= second && first != third)
+    else if (first == C && first != second && first != third)
     {
         return 0;
     }
 
-    else if (first == D && first!= second && first != third)
+    else if (first == D && first != second && first != third)
     {
         return 9;
     }
 
-    else if (first == second == D && first !=third)
+    else if (first == second == D && first != third)
     {
         return 5;
     }
@@ -34,7 +33,7 @@ int GetPoint(Move first, Move second, Move third)
     }
 }
 
-std::vector <int> GameData::GetTotalSums()
+std::vector<int> GameData::GetTotalSums()
 {
     return this->totalSums;
 }
@@ -44,23 +43,24 @@ void GameData::ChangeTotalSum(int id, int points)
     this->totalSums[id] += points;
 }
 
-std::vector <std::vector <Move>> GameData::GetMoves()
+std::vector<std::vector<Move>> GameData::GetMoves()
 {
     return this->moves;
 }
 
 void GameData::AddMove(int id, Move move)
 {
-   this->moves[id].push_back(move);
+    this->moves[id].push_back(move);
 }
 
 char GetMove(int move)
 {
-    if (move == C) return 'C';
+    if (move == C)
+        return 'C';
     return 'D';
 }
 
-void PrintInfo( std::vector<std::vector <Move>> moves, std::vector <int> totalSums)
+void PrintInfo(std::vector<std::vector<Move>> moves, std::vector<int> totalSums)
 {
     std::vector<Move> movesFirst = moves[0];
     std::vector<Move> movesSecond = moves[1];
@@ -73,9 +73,9 @@ void PrintInfo( std::vector<std::vector <Move>> moves, std::vector <int> totalSu
         std::cout << GetMove(movesFirst[i]) << " " << GetMove(movesSecond[i]) << " " << GetMove(movesThird[i]);
         std::cout << " => ";
         std::cout << GetPoint(movesFirst[i], movesSecond[i], movesThird[i])
-           << " " << GetPoint(movesSecond[i], movesFirst[i], movesThird[i])
-           << " " << GetPoint(movesThird[i], movesSecond[i], movesFirst[i])
-        << std::endl;
+                  << " " << GetPoint(movesSecond[i], movesFirst[i], movesThird[i])
+                  << " " << GetPoint(movesThird[i], movesSecond[i], movesFirst[i])
+                  << std::endl;
     }
 
     std::cout << "Total sum:" << std::endl;
