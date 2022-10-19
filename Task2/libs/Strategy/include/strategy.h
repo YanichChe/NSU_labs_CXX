@@ -1,11 +1,14 @@
+#ifndef STRATEGY
+#define STRATEGY
+
 #include <stdlib.h>
 #include <vector>
-
-enum Move { D, C };
+#include "../../GameData/include/gameData.h"
 
 class Strategy
 {
 public:
-    virtual int Algoritm(std::vector <int> mine, std::vector <int> opponentA, std::vector <int> opponentB) = 0;
+    virtual Move Algoritm() = 0;
 };
 
+#endif
