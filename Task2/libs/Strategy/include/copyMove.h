@@ -1,5 +1,5 @@
-#ifndef COPY_MOVE
-#define COPY_MOVE
+#ifndef COPY_MOVE_H
+#define COPY_MOVE_H
 
 #include "strategy.h"
 
