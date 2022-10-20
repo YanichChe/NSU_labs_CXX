@@ -1,5 +1,5 @@
-#ifndef STRATEGY
-#define STRATEGY
+#ifndef STRATEGY_H
+#define STRATEGY_H
 
 #include <stdlib.h>
 #include <vector>

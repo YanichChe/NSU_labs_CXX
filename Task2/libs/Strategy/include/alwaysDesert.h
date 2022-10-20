@@ -1,5 +1,5 @@
-#ifndef ALWAYS_DESERT
-#define ALWAYS_DESERT
+#ifndef ALWAYS_DESERT_H
+#define ALWAYS_DESERT_H
 
 #include "strategy.h"
 class AlwaysDesert : public Strategy

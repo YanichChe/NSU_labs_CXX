@@ -1,24 +1,22 @@
+#ifndef GAME_DATA_H
+#define GAME_DATA_H
+
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
 #include <string>
+#include "../../Matrix/include/matrix.h"
 
-enum Move
-{
-    D,
-    C
-};
 class GameData
 {
 public:
     std::vector<int> GetTotalSums();
     void ChangeTotalSum(int id, int points);
-    std::vector<std::vector<Move>> GetMoves();
-    void AddMove(int id, Move move);
+    Matrix *GetMatrix();
 
 private:
-    std::vector<std::vector<Move>> moves;
     std::vector<int> totalSums;
+    Matrix matrix;
 };
 
-void PrintInfo(std::vector<std::vector<Move>> moves, std::vector<int> totalSums);
+#endif
