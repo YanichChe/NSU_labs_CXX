@@ -2,7 +2,8 @@
 
 CopyMove ::CopyMove(GameData *data)
 {
-    this->moves = data->GetMoves();
+    Matrix* matrix = data->GetMatrix();
+    this->moves = matrix->GetMoves();
 }
 
 Move CopyMove::Algoritm()
