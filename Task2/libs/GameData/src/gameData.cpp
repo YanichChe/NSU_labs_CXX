@@ -1,5 +1,20 @@
 #include "gameData.h"
 
+std::vector<int> GameData::GetTotalSums()
+{
+    return this->totalSums;
+}
+
+void GameData::ChangeTotalSum(int id, int points)
+{
+    this->totalSums[id] += points;
+}
+
+Matrix *GameData::GetMatrix()
+{
+    return &(this->matrix);
+}
+
 int GetPoint(Move first, Move second, Move third)
 {
     if (first == second == third == C)
@@ -31,55 +46,4 @@ int GetPoint(Move first, Move second, Move third)
     {
         return 1;
     }
-}
-
-std::vector<int> GameData::GetTotalSums()
-{
-    return this->totalSums;
-}
-
-void GameData::ChangeTotalSum(int id, int points)
-{
-    this->totalSums[id] += points;
-}
-
-std::vector<std::vector<Move>> GameData::GetMoves()
-{
-    return this->moves;
-}
-
-void GameData::AddMove(int id, Move move)
-{
-    this->moves[id].push_back(move);
-}
-
-char GetMove(int move)
-{
-    if (move == C)
-        return 'C';
-    return 'D';
-}
-
-void PrintInfo(std::vector<std::vector<Move>> moves, std::vector<int> totalSums)
-{
-    std::vector<Move> movesFirst = moves[0];
-    std::vector<Move> movesSecond = moves[1];
-    std::vector<Move> movesThird = moves[2];
-
-    std::cout << "1 2 3    1 2 3" << std::endl;
-
-    for (int i = 0; i < movesFirst.size(); i++)
-    {
-        std::cout << GetMove(movesFirst[i]) << " " << GetMove(movesSecond[i]) << " " << GetMove(movesThird[i]);
-        std::cout << " => ";
-        std::cout << GetPoint(movesFirst[i], movesSecond[i], movesThird[i])
-                  << " " << GetPoint(movesSecond[i], movesFirst[i], movesThird[i])
-                  << " " << GetPoint(movesThird[i], movesSecond[i], movesFirst[i])
-                  << std::endl;
-    }
-
-    std::cout << "Total sum:" << std::endl;
-    std::cout << totalSums[0] << std::endl;
-    std::cout << totalSums[1] << std::endl;
-    std::cout << totalSums[2] << std::endl;
 }
