@@ -1,4 +1,4 @@
-set(LIBRARY_NAME GameData)
+set(LIBRARY_NAME Matrix)
 set(LIBRARY_HEADERS_DIR include)
 set(LIBRARY_HEADERS include/matrix.h)
 set(LIBRARY_SOURCE src/matrix.cpp)
