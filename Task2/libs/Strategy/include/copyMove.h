@@ -10,7 +10,7 @@ public:
     Move Algoritm() override;
 
 private:
-    std::vector<std::vector<Move>> moves;
+    Move lastMove;
 };
 
 #endif

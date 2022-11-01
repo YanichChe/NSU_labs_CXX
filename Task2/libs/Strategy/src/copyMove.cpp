@@ -2,15 +2,11 @@
 
 CopyMove ::CopyMove()
 {
-
+    lastMove = C;
 }
 
 Move CopyMove::Algoritm()
 {
-    return C;
+    return lastMove;
 }
 
-Strategy *CreateStrategy()
-{
-    return new CopyMove();
-}
