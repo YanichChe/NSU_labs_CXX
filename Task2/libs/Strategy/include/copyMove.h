@@ -6,13 +6,11 @@
 class CopyMove : public Strategy
 {
 public:
-    CopyMove(GameData *data);
+    CopyMove(std::string configs);
     Move Algoritm() override;
 
 private:
     std::vector<std::vector<Move>> moves;
 };
-
-Strategy *CreateStrategy(GameData *data);
 
 #endif

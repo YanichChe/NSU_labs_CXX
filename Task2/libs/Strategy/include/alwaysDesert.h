@@ -5,10 +5,8 @@
 class AlwaysDesert : public Strategy
 {
 public:
-    AlwaysDesert();
+    AlwaysDesert() = default;
     Move Algoritm() override;
 };
-
-Strategy *CreateStrategy(GameData *data);
 
 #endif

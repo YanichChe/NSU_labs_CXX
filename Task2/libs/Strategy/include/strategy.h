@@ -3,12 +3,20 @@
 
 #include <stdlib.h>
 #include <vector>
-#include "../../GameData/include/gameData.h"
+#include <string>
+
+enum Move
+{
+    D = 0,
+    C = 1
+};
 
 class Strategy
 {
 public:
+    virtual ~Strategy() = default; 
     virtual Move Algoritm() = 0;
 };
+
 
 #endif

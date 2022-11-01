@@ -5,10 +5,8 @@
 class AlwaysCooperate : public Strategy
 {
 public:
-    AlwaysCooperate();
+    AlwaysCooperate() = default;
     Move Algoritm() override;
 };
-
-Strategy *CreateStrategy(GameData *data);
 
 #endif
