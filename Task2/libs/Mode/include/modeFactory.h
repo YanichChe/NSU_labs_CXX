@@ -5,14 +5,15 @@
 #include <string>
 
 #include "mode.h"
+#include "gameData.h"
+
 
 using ModePtr = std::unique_ptr<Mode>;
 
-class ModeCreator
+class ModeFactory
 {
 public:
-    ModePtr Create(std::vector<std::string> & strategy_names, std::string & mode, 
-                   int steps, std::string & configs, Matrix matrix);
+    ModePtr Create(std::string & mode, GameData* data);
 };
 
 #endif
