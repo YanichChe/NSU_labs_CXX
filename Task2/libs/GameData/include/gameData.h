@@ -7,17 +7,30 @@
 #include <string>
 #include <fstream>
 
-#define POINTS_FILE "points.txt"
-#define POINTS_NUMBER 6
+#include "matrix.h"
+
 #define PLAYERS_NUMBER 3
 class GameData
 {
 public:
-    
+    GameData();
+    ~GameData();
+
+    void SetStrategiesNames(std::vector<std::string> names);
+    void SetSteps(int steps);
+    void SetConfigs(std::string configs);
+    void SetMatrix(Matrix *matrix);
+
+    std::vector<std::string> GetStrategiesNames();
+    int GetSteps();
+    std::string GetConfigs();
+    Matrix GetMatrix();
+
 private:
-    int points[POINTS_NUMBER];
+    std::vector<std::string> strategiesNames;
     int steps;
-    std::vector <std::string> strategiesNames;
+    std::string configs;
+    Matrix matrix;
 };
 
 #endif
