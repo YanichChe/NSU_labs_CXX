@@ -1,9 +1,8 @@
 #include "copyMove.h"
 
-CopyMove ::CopyMove(GameData *data)
+CopyMove ::CopyMove()
 {
-    Matrix* matrix = data->GetMatrix();
-    this->moves = matrix->GetMoves();
+
 }
 
 Move CopyMove::Algoritm()
@@ -11,7 +10,7 @@ Move CopyMove::Algoritm()
     return C;
 }
 
-Strategy *CreateStrategy(GameData *data)
+Strategy *CreateStrategy()
 {
-    return new CopyMove(data);
+    return new CopyMove();
 }

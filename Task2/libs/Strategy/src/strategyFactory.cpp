@@ -4,5 +4,5 @@ StrategyPtr StrategyFactory::createStrategy(std::string strategyName, std::strin
 {
     if(strategyName == "alwaysCooperate")       return std::make_unique<AlwaysCooperate>();
     else if (strategyName == "alwaysDesert")    return std::make_unique<AlwaysDesert>();
-    else if (strategyName == "copyMove")        return std::make_unique<CopyMove>(configs);   
+    else if (strategyName == "copyMove")        return std::make_unique<CopyMove>();   
 }

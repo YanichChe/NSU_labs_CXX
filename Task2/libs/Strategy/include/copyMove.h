@@ -6,7 +6,7 @@
 class CopyMove : public Strategy
 {
 public:
-    CopyMove(std::string configs);
+    CopyMove();
     Move Algoritm() override;
 
 private:
