@@ -4,15 +4,18 @@
 #include <cstdlib>
 #include <vector>
 #include <iostream>
+#include <iomanip>
+#include <fstream>
 #include <string>
+#include <array>
 class Matrix
 {
 public:
+    Matrix(std::string fileName);
+    std::array<std::array<int, 8>, 3> GetMatrix();
 
 private:
-
+    std::array<std::array<int, 8>, 3> matrix;
 };
-
-std::ostream &operator<<(std::ostream &out, const Matrix &i);
 
 #endif
