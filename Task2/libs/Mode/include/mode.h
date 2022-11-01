@@ -11,7 +11,7 @@
 class Mode
 {
 public:
-    Mode(GameData *gameData);
+    Mode();
     virtual ~Mode() = default;
     virtual void Start() = 0;
 

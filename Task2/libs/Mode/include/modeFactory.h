@@ -6,6 +6,8 @@
 
 #include "mode.h"
 #include "gameData.h"
+#include "detailed.h"
+#include "fast.h"
 
 
 using ModePtr = std::unique_ptr<Mode>;
