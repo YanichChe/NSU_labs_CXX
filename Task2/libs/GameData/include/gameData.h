@@ -1,11 +1,9 @@
-#ifndef GAME_DATA_H
-#define GAME_DATA_H
+//
+// Created by Yana228 on 03.11.2022.
+//
 
-#include <stdlib.h>
-#include <vector>
-#include <iostream>
-#include <string>
-#include <fstream>
+#ifndef TASK2_GAMEDATA_H
+#define TASK2_GAMEDATA_H
 
 #include "matrix.h"
 
@@ -33,4 +31,4 @@ private:
     Matrix matrix;
 };
 
-#endif
+#endif //TASK2_GAMEDATA_H
