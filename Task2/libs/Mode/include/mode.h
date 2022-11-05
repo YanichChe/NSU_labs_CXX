@@ -5,22 +5,29 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "strategy.h"
-#include "gameData.h"
+#include "../../Strategy/include/strategyFactory.h"
+#include "../../Strategy/include/strategy.h"
+#include "../../GameData/include/gameData.h"
 
 class Mode
 {
 public:
-    Mode();
+    Mode(GameData *data);
     virtual ~Mode() = default;
     virtual void Start() = 0;
+    std::array<Move, PLAYERS_NUMBER> GetVotes();
+    void UpdateTotalSums(std::array<Move, PLAYERS_NUMBER> results);
+    void UpdateStrategies(std::array<Move, PLAYERS_NUMBER> results);
 
-private:
+protected:
     std::vector<std::string> strategyNames;
     int steps;
     std::string configs;
     Matrix matrix;
-    int totalSums[3] = {0, 0, 0};
+
+    std::array<StrategyPointer, 3> strategies;
+
+    std::array<int, PLAYERS_NUMBER> totalSums = {0, 0, 0};
 };
 
 #endif

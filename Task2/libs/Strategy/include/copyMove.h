@@ -6,11 +6,12 @@
 class CopyMove : public Strategy
 {
 public:
-    CopyMove();
+    CopyMove() = default;
     Move Algoritm() override;
+    void UpdateStrategyData(std::array<Move, 2> results) override;
 
 private:
-    Move lastMove;
+    std::vector<std::vector<Move>> strategiesVotes;
 };
 
 #endif

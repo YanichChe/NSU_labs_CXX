@@ -5,7 +5,7 @@
 class AlwaysCooperate : public Strategy
 {
 public:
-    AlwaysCooperate() = default;
+    AlwaysCooperate(){};
     Move Algoritm() override;
 };
 

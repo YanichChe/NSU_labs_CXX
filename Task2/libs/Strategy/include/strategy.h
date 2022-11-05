@@ -4,19 +4,21 @@
 #include <stdlib.h>
 #include <vector>
 #include <string>
+#include <array>
+#include <vector>
 
 enum Move
 {
-    D = 0,
-    C = 1
+    D = 1,
+    C = 0
 };
 
 class Strategy
 {
 public:
-    virtual ~Strategy() = default; 
+    virtual ~Strategy() = default;
     virtual Move Algoritm() = 0;
+    virtual void UpdateStrategyData(std::array<Move, 2> results){};
 };
-
 
 #endif

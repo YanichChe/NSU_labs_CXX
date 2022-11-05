@@ -1,23 +1,18 @@
-//
-// Created by Yana228 on 03.11.2022.
-//
-
 #ifndef TASK2_GAMEDATA_H
 #define TASK2_GAMEDATA_H
 
-#include "matrix.h"
+#include "../../Matrix/include/matrix.h"
 
-#define PLAYERS_NUMBER 3
 class GameData
 {
 public:
     GameData();
     ~GameData();
 
-    void SetStrategiesNames(std::vector<std::string> names);
+    void SetStrategiesNames(std::vector<std::string> strategiesNames);
     void SetSteps(int steps);
     void SetConfigs(std::string configs);
-    void SetMatrix(Matrix *matrix);
+    void SetMatrix(std::string fileName);
 
     std::vector<std::string> GetStrategiesNames();
     int GetSteps();
@@ -31,4 +26,4 @@ private:
     Matrix matrix;
 };
 
-#endif //TASK2_GAMEDATA_H
+#endif // TASK2_GAMEDATA_H

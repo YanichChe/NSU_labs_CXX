@@ -8,6 +8,7 @@ class FastMode : public Mode
 public:
     FastMode(GameData *gameData);
     void Start() override;
+    void PrintTotalSums();
 };
 
 #endif

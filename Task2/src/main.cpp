@@ -1,10 +1,6 @@
-#include <stdlib.h>
-#include "commandLineParser.h"
+#include <iostream>
 
-int main(int argc, char ** argv)
-{
-    Options opts;
-    if (!SetOptionsValue(argc, argv, opts)) return EXIT_SUCCESS;
+int main(int argc, char ** argv) {
 
-    return EXIT_SUCCESS;
+    return 0;
 }

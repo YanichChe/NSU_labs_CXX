@@ -8,6 +8,7 @@ class DetailedMode : public Mode
 public:
     DetailedMode(GameData *gameData);
     void Start() override;
+    void PrintTotalSums();
 };
 
 #endif

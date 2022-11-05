@@ -10,14 +10,12 @@
 #include "alwaysDesert.h"
 #include "copyMove.h"
 
-using StrategyPtr = std::unique_ptr<Strategy>;
+using StrategyPointer = std::unique_ptr<Strategy>;
 
 class StrategyFactory
 {
-    public:
-        StrategyPtr createStrategy(std::string strategyName, std::string configs);
+public:
+    StrategyPointer createStrategy(std::string strategyName, std::string configs);
 };
 
 #endif
-
- 
