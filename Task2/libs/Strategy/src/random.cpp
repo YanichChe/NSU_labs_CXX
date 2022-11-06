@@ -1,32 +1,15 @@
-#include "copyMove.h"
+#include "random.h"
 
-void CopyMove::UpdateStrategyData(std::array<Move, 2> results)
+Move Random::Algoritm()
 {
-    for (int i = 0; i < 2; i++)
-    {
-        strategiesVotes[i].push_back(results[i]);
-    }
+    Move move = (Move)GetRandomNumber(0, 1);
+    return move;
 }
 
-Move CopyMove::Algoritm()
+int GetRandomNumber(int min, int max)
 {
-    if (strategiesVotes.empty())
-    {
-        return D;
-    }
 
-    else
-    {
-        int index = strategiesVotes.size() - 1;
-        if (strategiesVotes[0][index] == strategiesVotes[1][index])
-        {
-            return D;
-        }
-
-        else
-        {
-
-        }
-    }
-
+    srand(time(NULL));
+    int num = min + rand() % (max - min + 1);
+    return num;
 }

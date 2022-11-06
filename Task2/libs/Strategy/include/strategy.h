@@ -1,10 +1,11 @@
 #ifndef STRATEGY_H
 #define STRATEGY_H
 
-#include <stdlib.h>
+#include <cstdlib>
 #include <vector>
 #include <string>
 #include <array>
+#include <exception>
 #include <vector>
 
 enum Move

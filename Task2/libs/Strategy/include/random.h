@@ -2,16 +2,18 @@
 #define COPY_MOVE_H
 
 #include "strategy.h"
+#include <time.h>
 
-class CopyMove : public Strategy
+class Random : public Strategy
 {
 public:
-    CopyMove() = default;
+    Random() = default;
     Move Algoritm() override;
-    void UpdateStrategyData(std::array<Move, 2> results) override;
 
 private:
     std::vector<std::vector<Move>> strategiesVotes;
 };
+
+int GetRandomNumber(int min, int max);
 
 #endif
