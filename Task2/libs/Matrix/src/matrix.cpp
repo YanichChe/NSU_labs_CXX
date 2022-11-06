@@ -1,13 +1,27 @@
 #include "matrix.h"
 
+NotFoundFileException ::NotFoundFileException(const std::string &matrix_file) : std::invalid_argument(matrix_file + " not found file") {}
+
 Matrix::Matrix(std::string fileName)
 {
-    std::ifstream file(fileName);
+    std::ifstream file("points.txt");
     const int row = 8, column = PLAYERS_NUMBER;
 
-    for (int i = 0; i < row; i++)
-        for (int j = 0; j < column; j++)
-            file >> matrix[i][j];
+    if (file.is_open())
+    {
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < column; j++)
+            {
+                file >> matrix[i][j];
+            }
+        }
+    }
+
+    else
+    {
+        throw NotFoundFileException(fileName);
+    }
 }
 
 std::array<std::array<int, PLAYERS_NUMBER>, 8> Matrix::GetMatrix()

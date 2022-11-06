@@ -2,6 +2,7 @@
 #define TASK2_MATRIX_H
 
 #include <cstdlib>
+#include <exception>
 #include <vector>
 #include <iostream>
 #include <iomanip>
@@ -10,6 +11,12 @@
 #include <array>
 #include "../../Strategy/include/strategy.h"
 #define PLAYERS_NUMBER 3
+
+class NotFoundFileException : public std::invalid_argument
+{
+public:
+    explicit NotFoundFileException(const std::string &fileName);
+};
 
 class Matrix
 {
