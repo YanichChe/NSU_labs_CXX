@@ -4,7 +4,7 @@ NotFoundFileException ::NotFoundFileException(const std::string &matrix_file) : 
 
 Matrix::Matrix(std::string fileName)
 {
-    std::ifstream file("points.txt");
+    std::ifstream file(fileName);
     const int row = 8, column = PLAYERS_NUMBER;
 
     if (file.is_open())
