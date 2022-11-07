@@ -6,13 +6,10 @@
 class GameData
 {
 public:
-    GameData();
-    ~GameData();
-
     void SetStrategiesNames(std::vector<std::string> strategiesNames);
     void SetSteps(int steps);
     void SetConfigs(std::string configs);
-    void SetMatrix(std::string fileName);
+    // void SetMatrix(std::string fileName);
 
     std::vector<std::string> GetStrategiesNames();
     int GetSteps();

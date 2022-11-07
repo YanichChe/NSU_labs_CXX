@@ -34,8 +34,8 @@ void GameData::SetConfigs(std::string configs)
     this->configs = configs;
 }
 
-void GameData::SetMatrix(std::string fileName)
+/*void GameData::SetMatrix(std::string fileName)
 {
     Matrix matrix(fileName);
     this->matrix = matrix;
-}
+}*/
