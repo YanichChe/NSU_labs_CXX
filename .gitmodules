@@ -1,0 +1,3 @@
+[submodule "Task2/boost-cmake"]
+	path = Task2/boost-cmake
+	url = https://github.com/orphis/boost-cmake.git
