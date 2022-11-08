@@ -19,23 +19,12 @@ Matrix GameData::GetMatrix()
     return matrix;
 }
 
-void GameData::SetStrategiesNames(std::vector<std::string> strategiesNames)
+GameData::GameData(std::vector<std::string> strategiesNames, int steps, std::string configs, std::string matrixFileName)
 {
+
+    Matrix matrix(matrixFileName);
+    this->matrix = matrix;
     this->strategiesNames = strategiesNames;
-}
-
-void GameData::SetSteps(int steps)
-{
     this->steps = steps;
-}
-
-void GameData::SetConfigs(std::string configs)
-{
     this->configs = configs;
 }
-
-/*void GameData::SetMatrix(std::string fileName)
-{
-    Matrix matrix(fileName);
-    this->matrix = matrix;
-}*/

@@ -1,15 +1,16 @@
 #ifndef TASK2_GAMEDATA_H
 #define TASK2_GAMEDATA_H
 
-#include "../../Matrix/include/matrix.h"
+#include "matrix.h"
+#include <time.h>
+
+#define MATRIX_FILE_PATH "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt"
 
 class GameData
 {
 public:
-    void SetStrategiesNames(std::vector<std::string> strategiesNames);
-    void SetSteps(int steps);
-    void SetConfigs(std::string configs);
-    // void SetMatrix(std::string fileName);
+    GameData(){};
+    GameData(std::vector <std::string> strategiesNames, int steps, std::string configs, std::string matrixFileName);
 
     std::vector<std::string> GetStrategiesNames();
     int GetSteps();

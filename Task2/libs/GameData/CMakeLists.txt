@@ -4,8 +4,41 @@ set(LIBRARY_HEADERS include/gameData.h)
 set(LIBRARY_SOURCE src/gameData.cpp)
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_HEADERS} ${LIBRARY_SOURCE})
-target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR} ${CMAKE_SOURCE_DIR}/libs/Matrix/include)
+
+target_link_directories(${LIBRARY_NAME} PUBLIC  ${CMAKE_BINARY_DIR}/libs/Matrix)
+target_link_libraries(${LIBRARY_NAME} PUBLIC Matrix)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 target_link_libraries(${LIBRARY_NAME} PUBLIC ${LINK_LIBRARY})
+
 
 set(TEST_LIBRARY_NAME game_data_tests)
 set(TEST_SOURCE test/game_data.tests.cpp)
