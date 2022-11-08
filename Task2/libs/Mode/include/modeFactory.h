@@ -8,13 +8,20 @@
 #include "../../GameData/include/gameData.h"
 #include "detailed.h"
 #include "fast.h"
+#include <exception>
+
+class NotFoundMode : public std::invalid_argument
+{
+public:
+    explicit NotFoundMode(const std::string &modeName);
+};
 
 using ModePointer = std::unique_ptr<Mode>;
 
 class ModeFactory
 {
 public:
-    ModePointer Create(std::string &mode, GameData *data);
+    ModePointer Create(std::string mode, GameData *data);
 };
 
 #endif
