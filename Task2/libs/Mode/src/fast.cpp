@@ -18,6 +18,6 @@ void FastMode::PrintTotalSums()
 {
     std::cout << "Total sums: " << std::endl;
     std::cout << "First: " << totalSums[0] << std::endl;
-    std::cout << "Second: " << totalSums[0] << std::endl;
-    std::cout << "Third: " << totalSums[0] << std::endl;
+    std::cout << "Second: " << totalSums[1] << std::endl;
+    std::cout << "Third: " << totalSums[2] << std::endl;
 }
