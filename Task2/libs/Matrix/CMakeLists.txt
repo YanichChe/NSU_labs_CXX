@@ -18,4 +18,6 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(${TEST_LIBRARY_NAME} ${TEST_SOURCE})
+
+target_include_directories(${TEST_LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR})
 target_link_libraries(${TEST_LIBRARY_NAME} gtest_main ${LIBRARY_NAME})
