@@ -1,17 +1,16 @@
 #include "gtest/gtest.h"
-#include "../include/strategyFactory.h"
+#include "strategyFactory.h"
 
-/*TEST (constructor_tests, wrong_strategy_name) {
-    StrategyFactory factory;
+/*TEST (strategy_factory_tests, wrong_mode_name) {
+    StrategyFactory strategyFactory;
     try
     {
-        StrategyPointer  strategyDesert = factory.createStrategy("LaLaLend", "");
+        StrategyPointer strategyPointer = strategyFactory.createStrategy("oops", "");
     }
-    catch (const NotFoundStrategyException& exception)
+    catch (const NotFoundStrategy& exception)
     {
-        EXPECT_EQ(exception.what(), "LaLaLend not found strategy");
+        EXPECT_STREQ(exception.what(), "oops not found strategy");
     }
-
 }*/
 
 TEST(constructor_tests, always_cooperate)
@@ -27,6 +26,13 @@ TEST(constructor_tests, always_desert)
     StrategyFactory factory;
     StrategyPointer strategyDesert = factory.createStrategy("alwaysDesert", "");
     EXPECT_EQ(strategyDesert->Algoritm(), D);
+}
+
+TEST(constructor_tests, random)
+{
+    StrategyFactory factory;
+    StrategyPointer strategyRandom = factory.createStrategy("random", "");
+    EXPECT_NO_THROW({strategyRandom->Algoritm();});
 }
 
 int main(int argc, char **argv)
