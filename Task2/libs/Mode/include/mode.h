@@ -6,7 +6,6 @@
 #include <string>
 #include <fstream>
 #include "../../Strategy/include/strategyFactory.h"
-#include "../../Strategy/include/strategy.h"
 #include "../../GameData/include/gameData.h"
 
 class Mode
