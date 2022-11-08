@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.23)
-cmake_minimum_required(VERSION 3.0)
 
 set(PROJECT_NAME Task2)
 set(SOURCE src/main.cpp)
 set(LIBRARY_DIR libs)
-set(LIBRARY Strategy GameData Matrix Mode)
+set(LIBRARY Strategy Matrix Mode Game GameData CommandLineParser)
 
 project(${PROJECT_NAME} CXX)
 
