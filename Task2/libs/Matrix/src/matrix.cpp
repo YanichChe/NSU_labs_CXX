@@ -33,10 +33,10 @@ std::array<int, PLAYERS_NUMBER> Matrix::GetRow(std::array<Move, 3> votes)
 {
     int row = 0;
 
-    for (int i = PLAYERS_NUMBER - 1; i >= 0; i--)
+    for (int i = 0; i < PLAYERS_NUMBER; i++)
     {
-        row += votes[PLAYERS_NUMBER - i - 1] * (2 << i);
+        row = (row << 1) + votes[i];
     }
 
-    return matrix[row];
+    return  matrix[row];
 }
