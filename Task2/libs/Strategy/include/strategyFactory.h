@@ -8,6 +8,7 @@
 #include "strategy.h"
 #include "alwaysCooperate.h"
 #include "alwaysDesert.h"
+#include "titForTat.h"
 #include "random.h"
 
 using StrategyPointer = std::unique_ptr<Strategy>;

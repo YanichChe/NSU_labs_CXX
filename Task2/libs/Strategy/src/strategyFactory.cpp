@@ -8,4 +8,6 @@ StrategyPointer StrategyFactory::createStrategy(std::string strategyName, std::s
         return std::make_unique<AlwaysDesert>();
     else if (strategyName == "random")
         return std::make_unique<Random>();
+    else if (strategyName == "titForTat")
+        return std::make_unique<TitForTat>();
 }
