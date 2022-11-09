@@ -13,7 +13,7 @@ class Mode
 public:
     Mode(GameData *data);
     virtual ~Mode() = default;
-    virtual void Start() = 0;
+    virtual std::array<int, PLAYERS_NUMBER> Start() = 0;
     std::array<Move, PLAYERS_NUMBER> GetVotes();
     void UpdateTotalSums(std::array<Move, PLAYERS_NUMBER> results);
     void UpdateStrategies(std::array<Move, PLAYERS_NUMBER> results);

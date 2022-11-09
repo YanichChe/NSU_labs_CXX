@@ -7,7 +7,7 @@ class FastMode : public Mode
 {
 public:
     FastMode(GameData *gameData);
-    void Start() override;
+    std::array<int, PLAYERS_NUMBER> Start() override;
 
 private:
     void PrintTotalSums();
