@@ -1,8 +1,8 @@
 #include "tournament.h"
 
-TournamentMode::TournamentMode(GameData *gameData): Mode(gameData)
+TournamentMode::TournamentMode(GameData *gameData) : Mode(gameData)
 {
-    for (int i =0; i < strategyNames.size(); i++)
+    for (int i = 0; i < strategyNames.size(); i++)
     {
         allPoints.push_back(0);
     }
@@ -15,11 +15,14 @@ void TournamentMode::CreateCombinations(std::vector<std::string> strategyNames)
     std::vector<bool> combinations(strategyCount);
     std::fill(combinations.begin(), combinations.begin() + PLAYERS_NUMBER, true);
 
-    do {
+    do
+    {
         std::array<std::string, PLAYERS_NUMBER> combination;
         int index = 0;
-        for (int i = 0; i < strategyCount; ++i) {
-            if (combinations[i]) {
+        for (int i = 0; i < strategyCount; ++i)
+        {
+            if (combinations[i])
+            {
                 combination[index++] = strategyNames[i];
             }
         }
@@ -29,7 +32,7 @@ void TournamentMode::CreateCombinations(std::vector<std::string> strategyNames)
 
 void TournamentMode::UpdateTotalPoints(std::string strategyName, int points)
 {
-    for (int i = 0; i < strategyNames.size() ; i++)
+    for (int i = 0; i < strategyNames.size(); i++)
     {
         if (strategyName == strategyNames[i])
         {
@@ -47,17 +50,19 @@ void TournamentMode::PrintWinner()
     std::vector<std::string> winners;
     int max = allPoints[0];
 
-    for(int i=1;i<strategyNames.size();i++)
+    for (int i = 1; i < strategyNames.size(); i++)
     {
-        if(allPoints[i]>max) max = allPoints[i];
+        if (allPoints[i] > max)
+            max = allPoints[i];
     }
 
-    for (int i=1;i<strategyNames.size();i++)
+    for (int i = 1; i < strategyNames.size(); i++)
     {
-        if (allPoints[i] == max) winners.push_back(strategyNames[i]);
+        if (allPoints[i] == max)
+            winners.push_back(strategyNames[i]);
     }
 
-    for (int i =0; i < winners.size(); i++)
+    for (int i = 0; i < winners.size(); i++)
     {
         std::cout << winners[i] << std::endl;
     }

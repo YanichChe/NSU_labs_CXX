@@ -6,12 +6,12 @@
 class TitForTat : public Strategy
 {
 public:
-    TitForTat()=default;
+    TitForTat() = default;
     Move Algoritm() override;
     void UpdateStrategyData(std::array<Move, 2> results) override;
+
 private:
     std::array<Move, 2> results = {C, C};
 };
 
-
-#endif //TASK2_TITFORTAT_H
+#endif // TASK2_TITFORTAT_H

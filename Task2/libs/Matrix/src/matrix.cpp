@@ -38,5 +38,5 @@ std::array<int, PLAYERS_NUMBER> Matrix::GetRow(std::array<Move, 3> votes)
         row = (row << 1) + votes[i];
     }
 
-    return  matrix[row];
+    return matrix[row];
 }

@@ -8,4 +8,3 @@ Move Random::Algoritm()
 {
     return static_cast<Move>(rand() % 2);
 }
-

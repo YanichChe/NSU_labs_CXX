@@ -14,9 +14,9 @@ private:
     std::vector<int> allPoints;
     std::vector<std::array<std::string, PLAYERS_NUMBER>> combinations;
     void CreateCombinations(std::vector<std::string> strategyNames);
-    GameData* data;
+    GameData *data;
     void UpdateTotalPoints(std::string StrategyName, int points);
     void PrintWinner();
 };
 
-#endif //TASK2_TOURNAMENT_H
+#endif // TASK2_TOURNAMENT_H

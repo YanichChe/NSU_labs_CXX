@@ -12,12 +12,13 @@ int main(int argc, char **argv)
         return EXIT_SUCCESS;
     }
 
-    GameData gameData(options.strategyNames,
-                      options.steps,
-                      options.configs,
-                      options.matrixFile);
+    GameData data(options.strategyNames,
+                  options.steps,
+                  options.configs,
+                  options.matrixFile);
+
     Game game;
-    game.StartGame(&gameData, options.mode);
+    game.StartGame(&data, options.mode);
 
     return 0;
 }

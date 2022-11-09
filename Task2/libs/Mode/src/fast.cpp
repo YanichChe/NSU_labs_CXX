@@ -19,10 +19,8 @@ void FastMode::PrintTotalSums()
 {
     std::cout << "Total sums: " << std::endl;
 
-    for (int i = 0 ; i< PLAYERS_NUMBER; i++)
+    for (int i = 0; i < PLAYERS_NUMBER; i++)
     {
         std::cout << std::setw(20) << std::left << strategyNames[i] << " " << totalSums[i] << std::endl;
     }
 }
-
-
