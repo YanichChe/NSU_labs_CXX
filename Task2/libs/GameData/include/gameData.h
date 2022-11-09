@@ -17,6 +17,8 @@ public:
     std::string GetConfigs();
     Matrix GetMatrix();
 
+    void SetStrategiesNames( std::vector<std::string> strategiesNames);
+
 private:
     std::vector<std::string> strategiesNames;
     int steps;
