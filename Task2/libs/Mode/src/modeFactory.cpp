@@ -8,6 +8,8 @@ ModePointer ModeFactory::Create(std::string mode, GameData *data)
         return std::make_unique<DetailedMode>(data);
     else if (mode == "fast")
         return std::make_unique<FastMode>(data);
+    else if (mode == "tournament")
+        return std::make_unique<TournamentMode>(data);
     else
         throw NotFoundMode(mode);
 }

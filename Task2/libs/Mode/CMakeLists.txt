@@ -1,7 +1,7 @@
 set(LIBRARY_NAME Mode)
 set(LIBRARY_HEADERS_DIR include)
-set(LIBRARY_HEADERS include/mode.h include/detailed.h include/fast.h include/modeFactory.h)
-set(LIBRARY_SOURCE src/mode.cpp src/detailed.cpp src/fast.cpp src/modeFactory.cpp)
+set(LIBRARY_HEADERS include/mode.h include/detailed.h include/fast.h include/modeFactory.h include/tournament.h)
+set(LIBRARY_SOURCE src/mode.cpp src/detailed.cpp src/fast.cpp src/modeFactory.cpp src/tournament.cpp)
 
 set(TEST_LIBRARY_NAME modes_tests)
 set(TEST_SOURCE test/modes_tests.cpp)

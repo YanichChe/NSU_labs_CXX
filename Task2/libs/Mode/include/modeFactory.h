@@ -8,6 +8,7 @@
 #include "../../GameData/include/gameData.h"
 #include "detailed.h"
 #include "fast.h"
+#include "tournament.h"
 #include <exception>
 
 class NotFoundMode : public std::invalid_argument
