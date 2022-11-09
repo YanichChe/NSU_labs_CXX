@@ -7,11 +7,8 @@
 class Random : public Strategy
 {
 public:
-    Random() = default;
+    Random();
     Move Algoritm() override;
-
-private:
-    std::vector<std::vector<Move>> strategiesVotes;
 };
 
 int GetRandomNumber(int min, int max);
