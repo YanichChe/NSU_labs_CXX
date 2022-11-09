@@ -9,7 +9,7 @@ Mode::Mode(GameData *data)
 
     StrategyFactory strategyFactory;
 
-    for (int i = 0; i < PLAYERS_NUMBER; i++)
+    for (int i = 0; i < strategyNames.size(); i++)
     {
         strategies[i] = strategyFactory.createStrategy(strategyNames[i], configs);
     }
