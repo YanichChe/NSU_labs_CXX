@@ -2,15 +2,16 @@
 #define DETAILED_MODE_H
 
 #include "mode.h"
+#include <iomanip>
 
 class DetailedMode : public Mode
 {
 public:
     DetailedMode(GameData *gameData);
-    void Start() override;
+    std::array<int, PLAYERS_NUMBER> Start() override;
 
 private:
-    void PrintCurrentSums();
+    void PrintCurrentSums(std::array<Move, PLAYERS_NUMBER> results);
 };
 
 #endif
