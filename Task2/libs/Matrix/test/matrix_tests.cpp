@@ -9,8 +9,8 @@ TEST(constructor_tests, base_file)
         {{{4, 4, 4},
           {3, 3, 9},
           {3, 9, 3},
-          {0, 5, 5},
           {9, 3, 3},
+          {0, 5, 5},
           {5, 0, 5},
           {5, 5, 0},
           {1, 1, 1}}};
@@ -36,6 +36,7 @@ TEST(constructor_tests, not_file_found)
         EXPECT_STREQ(exception.what(), "points.txt not found file");
     }
 }
+
 
 int main(int argc, char **argv)
 {

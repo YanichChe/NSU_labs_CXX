@@ -29,7 +29,7 @@ std::array<std::array<int, PLAYERS_NUMBER>, 8> Matrix::GetMatrix()
     return matrix;
 }
 
-std::array<int, PLAYERS_NUMBER> Matrix::GetRow(std::array<Move, 3> votes)
+std::array<int, PLAYERS_NUMBER> Matrix::GetRow(std::array<Move, PLAYERS_NUMBER> votes)
 {
     int row = 0;
 

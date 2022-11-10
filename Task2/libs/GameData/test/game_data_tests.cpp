@@ -17,8 +17,8 @@ TEST(constructor_tests, game_data_constructor)
                       { 4, 4, 4 },
                       { 3, 3, 9 },
                       { 3, 9, 3 },
-                      { 0, 5, 5 },
                       { 9, 3, 3 },
+                      { 0, 5, 5 },
                       { 5, 0, 5 },
                       { 5, 5, 0 },
                       { 1, 1, 1 }
@@ -31,4 +31,11 @@ TEST(constructor_tests, game_data_constructor)
      for (int i = 0; i < row; i++)
          for (int j = 0; j < column; j++)
              EXPECT_EQ(points[i][j], resultingMatrix[i][j]);
+}
+
+
+int main(int argc, char **argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

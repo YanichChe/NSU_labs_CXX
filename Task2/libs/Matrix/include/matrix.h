@@ -9,8 +9,9 @@
 #include <fstream>
 #include <string>
 #include <array>
-#include "../../Strategy/include/strategy.h"
-#define PLAYERS_NUMBER 3
+#include "strategy.h"
+
+const int PLAYERS_NUMBER  = 3;
 
 class NotFoundFileException : public std::invalid_argument
 {
