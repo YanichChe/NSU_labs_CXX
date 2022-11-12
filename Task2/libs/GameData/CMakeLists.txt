@@ -41,7 +41,7 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC ${LINK_LIBRARY})
 
 
 set(TEST_LIBRARY_NAME game_data_tests)
-set(TEST_SOURCE test/game_data.tests.cpp)
+set(TEST_SOURCE test/game_data_tests.cpp)
 
 include(FetchContent)
 FetchContent_Declare(

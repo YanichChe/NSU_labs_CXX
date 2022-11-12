@@ -3,7 +3,7 @@
 
 TEST(constructor_tests, game_data_constructor)
 {
-    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDesert", "random"};
+    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random"};
     GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
 
     EXPECT_EQ(data.GetStrategiesNames()[0], "alwaysCooperate");
@@ -17,8 +17,8 @@ TEST(constructor_tests, game_data_constructor)
                       { 4, 4, 4 },
                       { 3, 3, 9 },
                       { 3, 9, 3 },
-                      { 9, 3, 3 },
                       { 0, 5, 5 },
+                      { 9, 3, 3 },
                       { 5, 0, 5 },
                       { 5, 5, 0 },
                       { 1, 1, 1 }
@@ -33,6 +33,33 @@ TEST(constructor_tests, game_data_constructor)
              EXPECT_EQ(points[i][j], resultingMatrix[i][j]);
 }
 
+TEST(constructor_tests, few_strategies_names)
+{
+    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect"};
+
+    try
+    {
+        GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    }
+    catch (const StrategyCountException &exception)
+    {
+        EXPECT_STREQ(exception.what(), "2 - few strategies for game");
+    }
+}
+
+TEST(constructor_tests, wrong_steps_value)
+{
+    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random"};
+
+    try
+    {
+        GameData data(strategiesNames, 0, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    }
+    catch (const WrongStepsValue &exception)
+    {
+        EXPECT_STREQ(exception.what(), "0 - wrong steps value");
+    }
+}
 
 int main(int argc, char **argv)
 {
