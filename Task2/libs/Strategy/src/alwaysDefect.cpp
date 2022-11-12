@@ -1,6 +1,6 @@
 #include "alwaysDefect.h"
 
-Move AlwaysDesert::Algoritm()
+Move AlwaysDefect::Algoritm()
 {
     return D;
 }

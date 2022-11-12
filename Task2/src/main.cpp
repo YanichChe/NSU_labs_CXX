@@ -5,7 +5,6 @@
 
 int main(int argc, char **argv)
 {
-
     Options options;
     if (!SetOptionsValue(argc, argv, options))
     {

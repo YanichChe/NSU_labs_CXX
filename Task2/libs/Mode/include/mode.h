@@ -1,12 +1,13 @@
 #ifndef MODE_H
 #define MODE_H
+
 #include <stdlib.h>
 #include <vector>
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "../../Strategy/include/strategyFactory.h"
-#include "../../GameData/include/gameData.h"
+#include "strategyFactory.h"
+#include "gameData.h"
 
 class Mode
 {

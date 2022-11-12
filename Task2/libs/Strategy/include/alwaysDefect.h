@@ -1,11 +1,11 @@
-#ifndef ALWAYS_DESERT_H
-#define ALWAYS_DESERT_H
+#ifndef ALWAYS_DEFECT_H
+#define ALWAYS_DEFECT_H
 
 #include "strategy.h"
-class AlwaysDesert : public Strategy
+class AlwaysDefect : public Strategy
 {
 public:
-    AlwaysDesert() = default;
+    AlwaysDefect() = default;
     Move Algoritm() override;
 };
 

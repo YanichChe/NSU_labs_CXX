@@ -36,17 +36,16 @@ void TournamentMode::UpdateTotalPoints(std::string strategyName, int points)
     {
         if (strategyName == strategyNames[i])
         {
-
             allPoints[i] += points;
             break;
         }
     }
 }
 
-void TournamentMode::PrintWinner()
+void TournamentMode::PrintResults()
 {
     std::cout << "---------------------------------" << std::endl;
-    std::cout << "WINNERS: " << std::endl;
+    std::cout << "RESULTS: " << std::endl;
     std::vector<std::string> winners;
     int max = allPoints[0];
 
@@ -56,11 +55,15 @@ void TournamentMode::PrintWinner()
             max = allPoints[i];
     }
 
-    for (int i = 1; i < strategyNames.size(); i++)
+    for (int i = 0; i < strategyNames.size(); i++)
     {
+        std::cout << std::setw(20) << std::left << strategyNames[i] << " " << allPoints[i] << std::endl;
         if (allPoints[i] == max)
             winners.push_back(strategyNames[i]);
     }
+
+    std::cout << "---------------------------------" << std::endl;
+    std::cout << "WINNERS: " << std::endl;
 
     for (int i = 0; i < winners.size(); i++)
     {
@@ -89,5 +92,5 @@ std::array<int, PLAYERS_NUMBER> TournamentMode::Start()
         }
     }
 
-    PrintWinner();
+    PrintResults();
 }

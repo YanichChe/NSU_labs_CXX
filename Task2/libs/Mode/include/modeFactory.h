@@ -5,7 +5,7 @@
 #include <string>
 
 #include "mode.h"
-#include "../../GameData/include/gameData.h"
+#include "gameData.h"
 #include "detailed.h"
 #include "fast.h"
 #include "tournament.h"

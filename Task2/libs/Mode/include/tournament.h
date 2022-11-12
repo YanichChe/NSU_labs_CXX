@@ -16,7 +16,7 @@ private:
     void CreateCombinations(std::vector<std::string> strategyNames);
     GameData *data;
     void UpdateTotalPoints(std::string StrategyName, int points);
-    void PrintWinner();
+    void PrintResults();
 };
 
 #endif // TASK2_TOURNAMENT_H
