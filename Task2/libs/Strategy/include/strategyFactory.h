@@ -7,9 +7,10 @@
 #include <string>
 #include "strategy.h"
 #include "alwaysCooperate.h"
-#include "alwaysDesert.h"
+#include "alwaysDefect.h"
 #include "titForTat.h"
 #include "random.h"
+#include "softGrudger.h"
 
 using StrategyPointer = std::unique_ptr<Strategy>;
 

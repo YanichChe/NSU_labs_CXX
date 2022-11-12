@@ -1,7 +1,21 @@
 set(LIBRARY_NAME Strategy)
 set(LIBRARY_HEADERS_DIR include)
-set(LIBRARY_HEADERS include/strategy.h include/alwaysCooperate.h include/alwaysDesert.h include/random.h include/strategyFactory.h include/titForTat.h)
-set(LIBRARY_SOURCE src/alwaysCooperate.cpp src/alwaysDesert.cpp src/random.cpp src/strategyFactory.cpp src/titForTat.cpp)
+
+set(LIBRARY_HEADERS include/strategy.h include/alwaysCooperate.h
+        include/alwaysDefect.h include/random.h
+                    include/strategyFactory.h include/titForTat.h
+                    include/softGrudger.h
+                    include/pavlov.h
+                    )
+
+set(LIBRARY_SOURCE  src/alwaysCooperate.cpp
+        src/alwaysDefect.cpp
+                    src/random.cpp
+                    src/strategyFactory.cpp
+                    src/titForTat.cpp
+                    src/softGrudger.cpp
+                    src/pavlov.cpp
+                   )
 
 set(TEST_LIBRARY_NAME strategy_tests)
 set(TEST_SOURCE test/strategy_tests.cpp)
