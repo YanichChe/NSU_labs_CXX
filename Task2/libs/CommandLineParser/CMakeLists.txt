@@ -8,6 +8,8 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR})
 
 target_link_libraries(${LIBRARY_NAME} PUBLIC ${LINK_LIBRARY} )
 
+##### BOOST SETTINGS ######################################################
+
 set(Boost_INCLUDE_DIR c:/mingw/include/)
 set(Boost_LIBRARY_DIR c:/mingw/lib/)
 find_package(Boost COMPONENTS program_options REQUIRED)
