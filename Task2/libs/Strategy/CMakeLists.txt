@@ -1,28 +1,51 @@
-set(LIBRARY_NAME Strategy)
-set(LIBRARY_HEADERS_DIR include)
+add_library(strategy INTERFACE)
+target_include_directories(strategy INTERFACE include/strategy)
 
-set(LIBRARY_HEADERS include/strategy.h include/alwaysCooperate.h
-        include/alwaysDefect.h include/random.h
-                    include/strategyFactory.h include/titForTat.h
-                    include/softGrudger.h
-                    include/pavlov.h
-                    )
+add_library(strategyFactory STATIC src/strategyFactory.cpp)
 
-set(LIBRARY_SOURCE  src/alwaysCooperate.cpp
-        src/alwaysDefect.cpp
-                    src/random.cpp
-                    src/strategyFactory.cpp
-                    src/titForTat.cpp
-                    src/softGrudger.cpp
-                    src/pavlov.cpp
-                   )
+target_include_directories(
+        strategyFactory PUBLIC
+        include/strategyFactory
+        include/strategy
+        ${CMAKE_SOURCE_DIR}/libs/Matrix/include/matrix)
 
+set(STRATEGIES
+        alwaysCooperate
+        alwaysDefect
+        softGrudger
+        pavlov
+        random
+        titForTat
+        )
+
+foreach(STRATEGY ${STRATEGIES})
+    add_library(${STRATEGY} STATIC
+            src/${STRATEGY}.cpp)
+    target_include_directories(${STRATEGY} PUBLIC
+            include/${STRATEGY}
+            include/strategy)
+    target_link_libraries(${STRATEGY}
+            INTERFACE strategy)
+    target_include_directories(strategyFactory PUBLIC
+            include/${STRATEGY})
+endforeach(STRATEGY)
+
+target_link_libraries(strategyFactory
+        PUBLIC Matrix
+        PUBLIC ${STRATEGIES}
+        INTERFACE strategy)
+
+set(Boost_INCLUDE_DIR c:/mingw/include/)
+set(Boost_LIBRARY_DIR c:/mingw/lib/)
+find_package(Boost COMPONENTS container REQUIRED)
+target_include_directories(pavlov PUBLIC  ${Boost_INCLUDE_DIR})
+
+target_link_libraries(pavlov PUBLIC strategyFactory)
+target_link_libraries(pavlov PUBLIC  ${Boost_LIBRARIES})
+
+####### GOOGLE TESTS ##################################################################################
 set(TEST_LIBRARY_NAME strategy_tests)
 set(TEST_SOURCE test/strategy_tests.cpp)
-
-add_library(${LIBRARY_NAME} STATIC ${LIBRARY_HEADERS} ${LIBRARY_SOURCE})
-target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_HEADERS_DIR})
-target_link_libraries(${LIBRARY_NAME} PUBLIC ${LINK_LIBRARY})
 
 include(FetchContent)
 FetchContent_Declare(
@@ -33,3 +56,4 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(${TEST_LIBRARY_NAME} ${TEST_SOURCE})
 target_link_libraries(${TEST_LIBRARY_NAME} gtest_main ${LIBRARY_NAME})
+
