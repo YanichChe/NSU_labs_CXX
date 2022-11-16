@@ -14,8 +14,8 @@ TEST(constructor_tests, fast_mode)
 
 TEST(constructor_tests, tournament_mode)
 {
-    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random", "titForTat", "softGrudger"};
-    GameData data(strategiesNames, 10, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random", "titForTat", "softGrudger", "pavlov"};
+    GameData data(strategiesNames, 10, "C:/Users/Yana228/LABS_NSU/Task2/configFiles/", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
 
     ModeFactory modeFactory;
     ModePointer tournament = modeFactory.Create("tournament", &data);

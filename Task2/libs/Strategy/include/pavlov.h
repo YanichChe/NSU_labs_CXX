@@ -2,15 +2,20 @@
 #define TASK2_PAVLOV_H
 
 #include "strategyFactory.h"
+#include <boost/property_tree/json_parser.hpp>
+#include <memory>
 
-enum StrategyName
+const int BASE_STEPS = 6;
+
+enum STRATEGY_NAME
 {
     TIT_FOR_TAT,
     ALWAYS_DEFECT,
     RANDOM
 };
 
-class Pavlov : Strategy
+namespace pt = boost::property_tree;
+class Pavlov : public Strategy
 {
 public:
     Pavlov(std::string configs);
@@ -19,14 +24,16 @@ public:
 
 private:
     std::array<Move, 2> results = {C, C};
-    StrategyPointer strategy;
+    std::string configs;
+    std::unique_ptr<Strategy> currentStrategy;
 
-    int countD1 = 0;
-    int countD2 = 0;
-
+    int countDefections1 = 0;
+    int countDefections2 = 0;
     int currentSteps = 0;
 
-    StrategyName ChooseStrategy(int coutD1, int count2);
+    pt::ptree configTree;
+
+    STRATEGY_NAME GetAnswerStrategy(int countDefections);
 };
 
 #endif // TASK2_PAVLOV_H
