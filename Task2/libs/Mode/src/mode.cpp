@@ -44,10 +44,7 @@ void Mode::UpdateStrategies(std::array<Move, 3> results)
         int index = 0;
         for (int j = 0; j < PLAYERS_NUMBER; j++)
         {
-            if (i != j)
-            {
-                otherResults[index++] = results[j];
-            }
+            if (i != j) otherResults[index++] = results[j];
         }
         strategies[i]->UpdateStrategyData(otherResults);
     }
