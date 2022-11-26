@@ -18,8 +18,14 @@ const uint16_t BITS_PER_SAMPLE = BYTE_SIZE * sizeof(int16_t);
 const uint16_t BLOCK_ALIGN = BITS_PER_SAMPLE * NUMBER_CHANNELS / BYTE_SIZE;
 const uint32_t BYTES_PER_SEC = BLOCK_ALIGN * SAMPLES_PER_SEC;
 
-const uint32_t DATA_CHUNK_ID = 1414744396; //??????????????????
+const uint32_t DATA_CHUNK_ID = 0x61746164;
 //-----------------------------------------------------------------------------
+
+struct Header
+{
+    uint32_t ChunkId;
+    uint32_t ChunkSize;
+};
 
 struct WAV
 {

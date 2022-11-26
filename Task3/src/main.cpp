@@ -7,7 +7,7 @@ int main()
 {
     Reader reader;
     const char *path = "C:/Users/Yana228/LABS_NSU/Task3/examples/district_four.wav";
-    reader.Load(path);
+    reader.load(path);
 
     return EXIT_SUCCESS;
 }

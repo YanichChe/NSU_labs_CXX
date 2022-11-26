@@ -69,13 +69,13 @@ class Reader
 public:
     Reader(){};
     ~Reader(){};
-    void Load(const char *path);
-    void ReadSample(int16_t *buffer);
+    void load(const char *path);
+    void readSample(int16_t *buffer);
 
 private:
     WAV wav;
     FILE *wavFile;
-    bool CheckInput();
+    bool checkInput();
 };
 
 #endif // LAB1_READER_H

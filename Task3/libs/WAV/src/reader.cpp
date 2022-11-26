@@ -32,20 +32,32 @@ WrongDataChunkId ::WrongDataChunkId(const uint32_t dataChunkId) :
 std::invalid_argument(std::to_string(dataChunkId) + " is not data") {}
 
 //----------------------------------------------------------------------------------
-void Reader::Load(const char *path)
+void Reader::load(const char *path)
 {
     wavFile = fopen(path, "r");
     fread(&wav, 1, sizeof(WAV), wavFile);
-    CheckInput();
+    Header headerChunk;
+
+    while(wav.dataChunkId != DATA_CHUNK_ID)
+    {
+        fseek( wavFile, wav.dataChunkSize, SEEK_CUR);
+
+        fread(&headerChunk, 1, sizeof(Header), wavFile);
+
+        wav.dataChunkId = headerChunk.ChunkId;
+        wav.dataChunkSize = headerChunk.ChunkSize;
+    }
+
+    checkInput();
 }
 
-void Reader::ReadSample(int16_t *buffer)
+void Reader::readSample(int16_t *buffer)
 {
     static const uint16_t bufferSize = wav.samplesPerSec;
     fread(buffer, sizeof(int16_t), bufferSize / (sizeof buffer[0]), wavFile);
 }
 
-bool Reader::CheckInput()
+bool Reader::checkInput()
 {
     if (wav.RIFFChunkId != RIFF_CHUNK_ID)               throw WrongRIFFChunkId(wav.RIFFChunkId);
     else if (wav.WAVEFormat != WAVE_FORMAT)             throw WrongWAVEFormat(wav.WAVEFormat);
@@ -60,3 +72,4 @@ bool Reader::CheckInput()
 
     return true;
 }
+
