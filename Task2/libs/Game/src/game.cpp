@@ -1,20 +1,11 @@
 #include "game.h"
 
-void Game::StartGame(GameData *data, std::string modeName)
+void Game::startGame(GameData *data, const std::string modeName)
 {
     ModeFactory modeFactory;
 
     ModePointer mode;
-    try
-    {
-        mode = modeFactory.Create(modeName, data);
-    }
+    mode = modeFactory.create(modeName, data);
 
-    catch (const NotFoundStrategy &exception)
-    {
-        std::cout << exception.what() << std::endl;
-        return;
-    }
-
-    mode->Start();
+    mode->start();
 }

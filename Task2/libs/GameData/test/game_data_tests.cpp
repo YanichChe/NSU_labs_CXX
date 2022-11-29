@@ -1,16 +1,17 @@
 #include "gtest/gtest.h"
 #include "gameData.h"
+using namespace gameData;
 
 TEST(constructor_tests, game_data_constructor)
 {
     std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random"};
     GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
 
-    EXPECT_EQ(data.GetStrategiesNames()[0], "alwaysCooperate");
-    EXPECT_EQ(data.GetSteps(), 5);
-    EXPECT_EQ(data.GetConfigs(), "meow");
+    EXPECT_EQ((*data.getStrategiesNames())[0], "alwaysCooperate");
+    EXPECT_EQ(data.getSteps(), 5);
+    EXPECT_EQ(data.getConfigs(), "meow");
 
-     Matrix matrix = data.GetMatrix();
+     Matrix matrix = *data.getMatrix();
 
      std::array<std::array<int, PLAYERS_NUMBER>, 8> points=
              {{
@@ -24,7 +25,7 @@ TEST(constructor_tests, game_data_constructor)
                       { 1, 1, 1 }
               }};
 
-     std::array<std::array<int, PLAYERS_NUMBER>, 8> resultingMatrix = matrix.GetMatrix();
+     std::array<std::array<int, PLAYERS_NUMBER>, 8> resultingMatrix = *matrix.getMatrix();
 
      const int row = 8, column = PLAYERS_NUMBER;
 

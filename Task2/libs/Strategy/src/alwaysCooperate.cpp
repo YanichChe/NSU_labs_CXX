@@ -1,6 +1,6 @@
 #include "alwaysCooperate.h"
 
-Move AlwaysCooperate::Algoritm()
+Move AlwaysCooperate::algorithm()
 {
     return C;
 }

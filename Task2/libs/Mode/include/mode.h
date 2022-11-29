@@ -9,25 +9,34 @@
 #include "strategyFactory.h"
 #include "gameData.h"
 
-class Mode
-{
-public:
-    Mode(GameData *data);
-    virtual ~Mode() = default;
-    virtual std::array<int, PLAYERS_NUMBER> Start() = 0;
-    std::array<Move, PLAYERS_NUMBER> GetVotes();
-    void UpdateTotalSums(std::array<Move, PLAYERS_NUMBER> results);
-    void UpdateStrategies(std::array<Move, PLAYERS_NUMBER> results);
+using namespace matrix;
+using namespace strategy;
+using namespace gameData;
 
-protected:
-    std::vector<std::string> strategyNames;
-    int steps;
-    std::string configs;
-    Matrix matrix;
+namespace mode {
+    class Mode {
+    public:
+        Mode(GameData *data);
 
-    std::array<StrategyPointer, 3> strategies;
+        virtual ~Mode() = default;
 
-    std::array<int, PLAYERS_NUMBER> totalSums = {0, 0, 0};
-};
+        virtual std::array<int, PLAYERS_NUMBER> start() = 0;
 
+        const std::array<Move, PLAYERS_NUMBER> getVotes();
+
+        void updateTotalSums(std::array<Move, PLAYERS_NUMBER> results);
+
+        void updateStrategies(std::array<Move, PLAYERS_NUMBER> results);
+
+    protected:
+        std::vector<std::string> strategyNames;
+        int steps;
+        std::string configs;
+        Matrix matrix;
+
+        std::array<StrategyPointer, 3> strategies;
+
+        std::array<int, PLAYERS_NUMBER> totalSums = {0, 0, 0};
+    };
+}
 #endif

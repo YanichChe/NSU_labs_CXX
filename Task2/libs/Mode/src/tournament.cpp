@@ -9,7 +9,7 @@ TournamentMode::TournamentMode(GameData *gameData) : Mode(gameData)
     this->data = gameData;
 };
 
-void TournamentMode::CreateCombinations(std::vector<std::string> strategyNames)
+void TournamentMode::createCombinations(const std::vector<std::string> strategyNames)
 {
     int strategyCount = strategyNames.size();
     std::vector<bool> combinations(strategyCount);
@@ -30,7 +30,7 @@ void TournamentMode::CreateCombinations(std::vector<std::string> strategyNames)
     } while (std::prev_permutation(combinations.begin(), combinations.end()));
 }
 
-void TournamentMode::UpdateTotalPoints(std::string strategyName, int points)
+void TournamentMode::updateTotalPoints(const std::string strategyName, const  int points)
 {
     for (int i = 0; i < strategyNames.size(); i++)
     {
@@ -42,7 +42,7 @@ void TournamentMode::UpdateTotalPoints(std::string strategyName, int points)
     }
 }
 
-void TournamentMode::PrintResults()
+void TournamentMode::printResults()
 {
     std::cout << "---------------------------------" << std::endl;
     std::cout << "RESULTS: " << std::endl;
@@ -72,25 +72,25 @@ void TournamentMode::PrintResults()
     std::cout << "---------------------------------" << std::endl;
 }
 
-std::array<int, PLAYERS_NUMBER> TournamentMode::Start()
+std::array<int, PLAYERS_NUMBER> TournamentMode::start()
 {
-    CreateCombinations(strategyNames);
+    createCombinations(strategyNames);
 
     for (int i = 0; i < combinations.size(); i++)
     {
         std::cout << "----------- ROUND " << i + 1 << " -----------" << std::endl;
         std::vector<std::string> currentStrategiesNames = {combinations[i][0], combinations[i][1], combinations[i][2]};
-        data->SetStrategiesNames(currentStrategiesNames);
+        data->setStrategiesNames(currentStrategiesNames);
 
         ModeFactory modeFactory;
-        ModePointer fast = modeFactory.Create("fast", data);
+        ModePointer fast = modeFactory.create("fast", data);
 
-        std::array<int, PLAYERS_NUMBER> currentPoints = fast->Start();
+        std::array<int, PLAYERS_NUMBER> currentPoints = fast->start();
         for (int j = 0; j < PLAYERS_NUMBER; j++)
         {
-            UpdateTotalPoints(currentStrategiesNames[j], currentPoints[j]);
+            updateTotalPoints(currentStrategiesNames[j], currentPoints[j]);
         }
     }
 
-    PrintResults();
+    printResults();
 }

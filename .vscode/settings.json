@@ -75,5 +75,6 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/Task1/cmake-build-debug/_deps/googletest-src"
 }

@@ -17,6 +17,6 @@ struct Options
     std::string matrixFile;
 };
 
-bool SetOptionsValue(int argc, char **argv, Options &options);
+bool setOptionsValue(const int argc, char **argv, Options &options);
 
 #endif

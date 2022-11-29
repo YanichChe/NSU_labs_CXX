@@ -1,11 +1,11 @@
 #include "softGrudger.h"
 
-void SoftGrudger::UpdateStrategyData(std::array<Move, 2> results)
+void SoftGrudger::updateStrategyData(const std::array<Move, 2> results)
 {
     this->results = results;
 }
 
-Move SoftGrudger::Algoritm()
+Move SoftGrudger::algorithm()
 {
     if (results[0] == D || results[1] == D)
     {

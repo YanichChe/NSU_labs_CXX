@@ -10,6 +10,11 @@
 #include "fast.h"
 #include "tournament.h"
 #include <exception>
+using namespace mode;
+
+const std::string DETAILED = "detailed";
+const std::string FAST = "fast";
+const std::string TOURNAMENT = "tournament";
 
 class NotFoundMode : public std::invalid_argument
 {
@@ -22,7 +27,7 @@ using ModePointer = std::unique_ptr<Mode>;
 class ModeFactory
 {
 public:
-    ModePointer Create(std::string mode, GameData *data);
+    ModePointer create(const std::string mode, GameData *data);
 };
 
 #endif

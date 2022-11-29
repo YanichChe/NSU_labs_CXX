@@ -1,11 +1,13 @@
 #include "mode.h"
 
+using namespace mode;
+
 Mode::Mode(GameData *data)
 {
-    strategyNames = data->GetStrategiesNames();
-    steps = data->GetSteps();
-    configs = data->GetConfigs();
-    matrix = data->GetMatrix();
+    strategyNames = *data->getStrategiesNames();
+    steps = data->getSteps();
+    configs = data->getConfigs();
+    matrix = *data->getMatrix();
 
     StrategyFactory strategyFactory;
 
@@ -15,28 +17,28 @@ Mode::Mode(GameData *data)
     }
 }
 
-std::array<Move, PLAYERS_NUMBER> Mode::GetVotes()
+const std::array<Move, PLAYERS_NUMBER> Mode::getVotes()
 {
     std::array<Move, PLAYERS_NUMBER> results;
 
     for (int i = 0; i < PLAYERS_NUMBER; i++)
     {
-        results[i] = strategies[i]->Algoritm();
+        results[i] = strategies[i]->algorithm();
     }
 
     return results;
 }
 
-void Mode::UpdateTotalSums(std::array<Move, PLAYERS_NUMBER> results)
+void Mode::updateTotalSums(std::array<Move, PLAYERS_NUMBER> results)
 {
-    std::array<int, PLAYERS_NUMBER> pointsArray = matrix.GetRow(results);
+    std::array<int, PLAYERS_NUMBER> pointsArray = *matrix.getRow(results);
     for (int i = 0; i < PLAYERS_NUMBER; i++)
     {
         totalSums[i] += pointsArray[i];
     }
 }
 
-void Mode::UpdateStrategies(std::array<Move, 3> results)
+void Mode::updateStrategies(std::array<Move, 3> results)
 {
     for (int i = 0; i < PLAYERS_NUMBER; i++)
     {
@@ -46,6 +48,6 @@ void Mode::UpdateStrategies(std::array<Move, 3> results)
         {
             if (i != j) otherResults[index++] = results[j];
         }
-        strategies[i]->UpdateStrategyData(otherResults);
+        strategies[i]->updateStrategyData(otherResults);
     }
 }

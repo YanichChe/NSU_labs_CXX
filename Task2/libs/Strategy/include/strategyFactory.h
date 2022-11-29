@@ -11,21 +11,14 @@
 #include "titForTat.h"
 #include "random.h"
 #include "softGrudger.h"
-#include "pavlov.h"
 #include <exception>
-
-class NotFoundStrategy : public std::invalid_argument
-{
-public:
-    explicit NotFoundStrategy(const std::string &strategyName);
-};
 
 using StrategyPointer = std::unique_ptr<Strategy>;
 
 class StrategyFactory
 {
 public:
-    StrategyPointer createStrategy(std::string strategyName, std::string configs);
+    StrategyPointer createStrategy(const std::string strategyName, const std::string configs);
 };
 
 #endif

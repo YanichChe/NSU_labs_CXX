@@ -6,7 +6,7 @@
 int main(int argc, char **argv)
 {
     Options options;
-    if (!SetOptionsValue(argc, argv, options))
+    if (!setOptionsValue(argc, argv, options))
     {
         return EXIT_SUCCESS;
     }
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
                   options.matrixFile);
 
     Game game;
-    game.StartGame(&data, options.mode);
+    game.startGame(&data, options.mode);
 
     return 0;
 }

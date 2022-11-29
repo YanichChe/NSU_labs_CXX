@@ -8,18 +8,20 @@
 #include <exception>
 #include <vector>
 
-enum Move
-{
+namespace strategy{
+enum Move {
     D = 1,
     C = 0
 };
 
-class Strategy
-{
+class Strategy {
 public:
     virtual ~Strategy() = default;
-    virtual Move Algoritm() = 0;
-    virtual void UpdateStrategyData(std::array<Move, 2> results){};
+
+    virtual Move algorithm() = 0;
+
+    virtual void updateStrategyData(const std::array<Move, 2> results) {};
 };
 
+}
 #endif

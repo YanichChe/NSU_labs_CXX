@@ -2,9 +2,9 @@
 
 DetailedMode::DetailedMode(GameData *gameData) : Mode(gameData) {}
 
-void DetailedMode::PrintCurrentSums(std::array<Move, PLAYERS_NUMBER> results)
+void DetailedMode::printCurrentSums(const std::array<Move, PLAYERS_NUMBER> results)
 {
-    std::array<int, PLAYERS_NUMBER> pointsArray = matrix.GetRow(results);
+    std::array<int, PLAYERS_NUMBER> pointsArray = *matrix.getRow(results);
 
     std::cout << std::setw(20) << std::left << "NAME"
               << std::setw(20) << std::left << "CHOICE"
@@ -20,24 +20,24 @@ void DetailedMode::PrintCurrentSums(std::array<Move, PLAYERS_NUMBER> results)
     }
 }
 
-std::array<int, PLAYERS_NUMBER> DetailedMode::Start()
+std::array<int, PLAYERS_NUMBER> DetailedMode::start()
 {
     while (true)
     {
         std::string input;
         std::cin >> input;
 
-        if (input == "quit")
+        if (input == QUIT)
         {
             break;
         }
-        else if (input == "step")
+        else if (input == STEP)
         {
-            std::array<Move, PLAYERS_NUMBER> results = GetVotes();
-            UpdateStrategies(results);
-            UpdateTotalSums(results);
+            std::array<Move, PLAYERS_NUMBER> results = getVotes();
+            updateStrategies(results);
+            updateTotalSums(results);
 
-            PrintCurrentSums(results);
+            printCurrentSums(results);
         }
     }
 }

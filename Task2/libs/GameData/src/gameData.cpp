@@ -1,29 +1,30 @@
 #include "gameData.h"
+using namespace gameData;
 
 StrategyCountException ::StrategyCountException(const std::vector<std::string> strategiesNames) : std::invalid_argument(std::to_string(strategiesNames.size()) + " - few strategies for game") {}
 
 WrongStepsValue ::WrongStepsValue(const int steps) : std::invalid_argument(std::to_string(steps) + " - wrong steps value") {}
 
-std::vector<std::string> GameData::GetStrategiesNames()
+const std::vector<std::string>* GameData::getStrategiesNames()
 {
-    return strategiesNames;
+    return &strategiesNames;
 }
-int GameData::GetSteps()
+const int GameData::getSteps()
 {
     return steps;
 }
 
-std::string GameData::GetConfigs()
+const std::string GameData::getConfigs()
 {
     return configs;
 }
 
-Matrix GameData::GetMatrix()
+const Matrix* GameData::getMatrix()
 {
-    return matrix;
+    return &matrix;
 }
 
-void GameData::SetStrategiesNames(std::vector<std::string> strategiesNames)
+void GameData::setStrategiesNames(const std::vector<std::string> strategiesNames)
 {
     this->strategiesNames = strategiesNames;
 }

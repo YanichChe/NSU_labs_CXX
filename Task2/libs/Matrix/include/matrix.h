@@ -10,25 +10,27 @@
 #include <string>
 #include <array>
 #include "strategy.h"
+using namespace strategy;
+namespace matrix {
+    const int PLAYERS_NUMBER = 3;
 
-const int PLAYERS_NUMBER  = 3;
+    class NotFoundFileException : public std::invalid_argument {
+    public:
+        explicit NotFoundFileException(const std::string &fileName);
+    };
 
-class NotFoundFileException : public std::invalid_argument
-{
-public:
-    explicit NotFoundFileException(const std::string &fileName);
-};
+    class Matrix {
+    public:
+        Matrix() {};
 
-class Matrix
-{
-public:
-    Matrix(){};
-    Matrix(std::string fileName);
-    std::array<std::array<int, PLAYERS_NUMBER>, 8> GetMatrix();
-    std::array<int, PLAYERS_NUMBER> GetRow(std::array<Move, PLAYERS_NUMBER> votes);
+        Matrix(const std::string fileName);
 
-private:
-    std::array<std::array<int, PLAYERS_NUMBER>, 8> matrix;
-};
+        const std::array<std::array<int, PLAYERS_NUMBER>, 8>* getMatrix();
 
+        const std::array<int, PLAYERS_NUMBER>* getRow(std::array<Move, PLAYERS_NUMBER> votes);
+
+    private:
+        std::array<std::array<int, PLAYERS_NUMBER>, 8> matrix;
+    };
+}
 #endif // TASK2_MATRIX_H

@@ -2,13 +2,14 @@
 #define TASK2_TITFORTAT_H
 
 #include "strategy.h"
+using namespace strategy;
 
 class TitForTat : public Strategy
 {
 public:
     TitForTat() = default;
-    Move Algoritm() override;
-    void UpdateStrategyData(std::array<Move, 2> results) override;
+    Move algorithm() override;
+    void updateStrategyData(const std::array<Move, 2> results) override;
 
 private:
     std::array<Move, 2> results = {C, C};

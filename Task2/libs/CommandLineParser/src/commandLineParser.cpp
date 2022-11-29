@@ -1,6 +1,6 @@
 #include "commandLineParser.h"
 
-bool SetOptionsValue(int argc, char **argv, Options &options)
+bool setOptionsValue(const int argc, char **argv, Options &options)
 {
     po::options_description desc("All options");
     desc.add_options()("help", "Show options description")

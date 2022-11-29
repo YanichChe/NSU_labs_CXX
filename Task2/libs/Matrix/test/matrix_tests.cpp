@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "matrix.h"
 
+using namespace matrix;
 TEST(constructor_tests, base_file)
 {
     Matrix matrix("C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
@@ -9,13 +10,13 @@ TEST(constructor_tests, base_file)
         {{{4, 4, 4},
           {3, 3, 9},
           {3, 9, 3},
-          {9, 3, 3},
           {0, 5, 5},
+          {9, 3, 3},
           {5, 0, 5},
           {5, 5, 0},
           {1, 1, 1}}};
 
-    std::array<std::array<int, PLAYERS_NUMBER>, 8> resultingMatrix = matrix.GetMatrix();
+    std::array<std::array<int, PLAYERS_NUMBER>, 8> resultingMatrix = *matrix.getMatrix();
 
     const int row = 8, column = PLAYERS_NUMBER;
 

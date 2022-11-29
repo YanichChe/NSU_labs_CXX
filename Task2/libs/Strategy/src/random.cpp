@@ -4,7 +4,7 @@ Random::Random()
 {
     srand(time(nullptr));
 }
-Move Random::Algoritm()
+Move Random::algorithm()
 {
     return static_cast<Move>(rand() % 2);
 }

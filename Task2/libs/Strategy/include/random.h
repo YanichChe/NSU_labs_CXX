@@ -3,14 +3,13 @@
 
 #include "strategy.h"
 #include <time.h>
+using namespace strategy;
 
 class Random : public Strategy
 {
 public:
     Random();
-    Move Algoritm() override;
+    Move algorithm() override;
 };
-
-int GetRandomNumber(int min, int max);
 
 #endif

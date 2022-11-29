@@ -7,20 +7,20 @@ TEST(constructor_tests, fast_mode)
     GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
 
     ModeFactory modeFactory;
-    ModePointer fast = modeFactory.Create("fast", &data);
+    ModePointer fast = modeFactory.create("fast", &data);
 
-    EXPECT_NO_THROW({ fast->Start(); });
+    EXPECT_NO_THROW({ fast->start(); });
 }
 
 TEST(constructor_tests, tournament_mode)
 {
-    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random", "titForTat", "softGrudger", "pavlov"};
+    std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random", "titForTat", "softGrudger"};
     GameData data(strategiesNames, 10, "C:/Users/Yana228/LABS_NSU/Task2/configFiles/", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
 
     ModeFactory modeFactory;
-    ModePointer tournament = modeFactory.Create("tournament", &data);
+    ModePointer tournament = modeFactory.create("tournament", &data);
 
-    EXPECT_NO_THROW({ tournament->Start(); });
+    EXPECT_NO_THROW({ tournament->start(); });
 }
 
 TEST(mode_factory_tests, wrong_mode_name)
@@ -29,7 +29,7 @@ TEST(mode_factory_tests, wrong_mode_name)
     ModeFactory factory;
     try
     {
-        ModePointer mode = factory.Create("lalala", &data);
+        ModePointer mode = factory.create("lalala", &data);
     }
     catch (const NotFoundMode &exception)
     {

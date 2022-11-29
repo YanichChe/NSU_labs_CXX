@@ -2,20 +2,20 @@
 
 FastMode::FastMode(GameData *gameData) : Mode(gameData) {}
 
-std::array<int, PLAYERS_NUMBER> FastMode::Start()
+std::array<int, PLAYERS_NUMBER> FastMode::start()
 {
     for (int i = 0; i < steps; i++)
     {
-        std::array<Move, PLAYERS_NUMBER> results = GetVotes();
-        UpdateStrategies(results);
-        UpdateTotalSums(results);
+        std::array<Move, PLAYERS_NUMBER> results = getVotes();
+        updateStrategies(results);
+        updateTotalSums(results);
     }
 
-    PrintTotalSums();
+    printTotalSums();
     return totalSums;
 }
 
-void FastMode::PrintTotalSums()
+void FastMode::printTotalSums()
 {
     std::cout << "Total sums: " << std::endl;
 

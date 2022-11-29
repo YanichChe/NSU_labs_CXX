@@ -4,13 +4,14 @@
 #include "strategy.h"
 
 const int MAX_PUNISHMENT_COUNT = 6;
+using namespace strategy;
 
 class SoftGrudger : public Strategy
 {
 public:
     SoftGrudger() = default;
-    Move Algoritm() override;
-    void UpdateStrategyData(std::array<Move, 2> results) override;
+    Move algorithm() override;
+    void updateStrategyData(const std::array<Move, 2> results) override;
 
 private:
     std::array<Move, 2> results = {C, C};
