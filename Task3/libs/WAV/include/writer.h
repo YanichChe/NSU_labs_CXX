@@ -8,12 +8,14 @@
 
 class Writer {
 public:
-    Writer(FILE* output);
-    ~Writer();
-    void write(int16_t *buffer);
+    Writer(const std::string path);
+    ~Writer(){};
+    void writeSample(int16_t *buffer);
 private:
     WAV wav;
-    FILE* output;
+    std::ofstream outputFile;
+    void writeHeader();
+    std::string path;
 };
 
 #endif //TASK3_WRITER_H
