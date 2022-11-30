@@ -4,6 +4,7 @@
 #include "wav.h"
 #include <iostream>
 #include <fstream>
+#include <string.h>
 #include <exception>
 
 // INPUT VALUES ERRORS  --------------------------------------------------------------
@@ -69,12 +70,12 @@ class Reader
 public:
     Reader(){};
     ~Reader(){};
-    void load(const char *path);
+    void load(const std::string path);
     void readSample(int16_t *buffer);
 
 private:
     WAV wav;
-    FILE *wavFile;
+    std::ifstream inputFile;
     bool checkInput();
 };
 
