@@ -32,21 +32,22 @@ WrongDataChunkId ::WrongDataChunkId(const uint32_t dataChunkId) :
 std::invalid_argument(std::to_string(dataChunkId) + " is not data") {}
 
 //----------------------------------------------------------------------------------
-void Reader::load(const char *path)
+void Reader::load(const std::string path)
 {
-    wavFile = fopen(path, "r");
-    fread(&wav, 1, sizeof(WAV), wavFile);
+    inputFile.open(path, std::ios_base::binary);
+
+    inputFile.read((char*)&wav, sizeof(WAV));
+
     Header headerChunk;
 
-    while(wav.dataChunkId != DATA_CHUNK_ID)
+    while(wav.dataHeader.ChunkId != DATA_CHUNK_ID)
     {
-        fseek( wavFile, wav.dataChunkSize, SEEK_CUR);
-
-        fread(&headerChunk, 1, sizeof(Header), wavFile);
-
-        wav.dataChunkId = headerChunk.ChunkId;
-        wav.dataChunkSize = headerChunk.ChunkSize;
+        inputFile.seekg(wav.dataHeader.ChunkSize, std::fstream::cur);
+        inputFile.read((char*)&headerChunk, sizeof(Header));
+        wav.dataHeader.ChunkId = headerChunk.ChunkId;
+        wav.dataHeader.ChunkSize = headerChunk.ChunkSize;
     }
+
 
     checkInput();
 }
@@ -54,21 +55,21 @@ void Reader::load(const char *path)
 void Reader::readSample(int16_t *buffer)
 {
     static const uint16_t bufferSize = wav.samplesPerSec;
-    fread(buffer, sizeof(int16_t), bufferSize / (sizeof buffer[0]), wavFile);
+    inputFile.read((char*)buffer, bufferSize / (sizeof buffer[0]));
 }
 
 bool Reader::checkInput()
 {
-    if (wav.RIFFChunkId != RIFF_CHUNK_ID)               throw WrongRIFFChunkId(wav.RIFFChunkId);
+    if (wav.RIFFHeader.ChunkId != RIFF_CHUNK_ID)        throw WrongRIFFChunkId(wav.RIFFHeader.ChunkId);
     else if (wav.WAVEFormat != WAVE_FORMAT)             throw WrongWAVEFormat(wav.WAVEFormat);
-    else if (wav.FMTChunkId != FMT_CHUNK_ID)            throw WrongFMTChunkId(wav.FMTChunkId);
+    else if (wav.FMTHeader.ChunkId != FMT_CHUNK_ID)     throw WrongFMTChunkId(wav.FMTHeader.ChunkId);
     else if (wav.audioFormat != AUDIO_FORMAT)           throw WrongAudioFormat(wav.audioFormat);
     else if (wav.numberChannels != NUMBER_CHANNELS)     throw WrongNumberChannels(wav.numberChannels);
     else if (wav.samplesPerSec != SAMPLES_PER_SEC)      throw WrongSamplesPerSec(wav.samplesPerSec);
     else if (wav.bytesPerSec != BYTES_PER_SEC)          throw WrongBytesPerSec(wav.bytesPerSec);
     else if (wav.bitsPerSample != BITS_PER_SAMPLE)      throw WrongBitesPerSample(wav.bitsPerSample);
     else if (wav.blockAlign != BLOCK_ALIGN)             throw WrongBlockAlign(wav.blockAlign);
-    else if (wav.dataChunkId != DATA_CHUNK_ID)          throw WrongDataChunkId(wav.dataChunkId);
+    else if (wav.dataHeader.ChunkId!= DATA_CHUNK_ID)    throw WrongDataChunkId(wav.dataHeader.ChunkId);
 
     return true;
 }
