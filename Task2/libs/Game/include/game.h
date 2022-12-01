@@ -3,12 +3,10 @@
 #include "gameData.h"
 #include "modeFactory.h"
 
-using namespace gameData;
-
 class Game
 {
 public:
-    void startGame(GameData *data, const std::string modeName);
+    void startGame(gameData::GameData *data, const std::string modeName);
 };
 
 #endif // TASK2_GAME_H

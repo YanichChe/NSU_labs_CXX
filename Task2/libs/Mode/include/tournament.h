@@ -3,19 +3,19 @@
 
 #include "modeFactory.h"
 #include <algorithm>
+using ModePointer = std::unique_ptr<mode::Mode>;
 
-using namespace mode;
-class TournamentMode : public Mode
+class TournamentMode : public mode::Mode
 {
 public:
-    TournamentMode(GameData *gameData);
-    std::array<int, PLAYERS_NUMBER> start() override;
+    TournamentMode(gameData::GameData *gameData);
+    std::array<int, matrix::PLAYERS_NUMBER> start() override;
 
 private:
     std::vector<int> allPoints;
-    std::vector<std::array<std::string, PLAYERS_NUMBER>> combinations;
+    std::vector<std::array<std::string, matrix::PLAYERS_NUMBER>> combinations;
     void createCombinations(const std::vector<std::string> strategyNames);
-    GameData *data;
+    gameData::GameData *data;
     void updateTotalPoints(const std::string StrategyName, const int points);
     void printResults();
 };

@@ -11,7 +11,7 @@ int main(int argc, char **argv)
         return EXIT_SUCCESS;
     }
 
-    GameData data(options.strategyNames,
+    gameData::GameData data(options.strategyNames,
                   options.steps,
                   options.configs,
                   options.matrixFile);

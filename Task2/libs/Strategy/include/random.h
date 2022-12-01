@@ -3,13 +3,12 @@
 
 #include "strategy.h"
 #include <time.h>
-using namespace strategy;
 
-class Random : public Strategy
+class Random : public strategy::Strategy
 {
 public:
     Random();
-    Move algorithm() override;
+    strategy::Move algorithm() override;
 };
 
 #endif

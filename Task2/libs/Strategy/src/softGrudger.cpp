@@ -1,13 +1,13 @@
 #include "softGrudger.h"
 
-void SoftGrudger::updateStrategyData(const std::array<Move, 2> results)
+void SoftGrudger::updateStrategyData(const std::array<strategy::Move, 2> results)
 {
     this->results = results;
 }
 
-Move SoftGrudger::algorithm()
+strategy::Move SoftGrudger::algorithm()
 {
-    if (results[0] == D || results[1] == D)
+    if (results[0] == strategy::D || results[1] == strategy::D)
     {
         indexPunishment = 0;
     }
@@ -15,7 +15,7 @@ Move SoftGrudger::algorithm()
     if (indexPunishment == MAX_PUNISHMENT_COUNT)
     {
         indexPunishment = -1;
-        choice = C;
+        choice = strategy::C;
     }
 
     else if (indexPunishment >= 0)

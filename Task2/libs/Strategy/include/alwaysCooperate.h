@@ -3,13 +3,11 @@
 
 #include "strategy.h"
 
-using namespace strategy;
-
-class AlwaysCooperate : public Strategy
+class AlwaysCooperate : public strategy::Strategy
 {
 public:
     AlwaysCooperate(){};
-    Move algorithm() override;
+    strategy::Move algorithm() override;
 };
 
 #endif

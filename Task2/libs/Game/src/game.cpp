@@ -1,8 +1,8 @@
 #include "game.h"
 
-void Game::startGame(GameData *data, const std::string modeName)
+void Game::startGame(gameData::GameData *data, const std::string modeName)
 {
-    ModeFactory modeFactory;
+    modeFactory::ModeFactory modeFactory;
 
     ModePointer mode;
     mode = modeFactory.create(modeName, data);

@@ -11,9 +11,9 @@ TEST(constructor_tests, game_data_constructor)
     EXPECT_EQ(data.getSteps(), 5);
     EXPECT_EQ(data.getConfigs(), "meow");
 
-     Matrix matrix = *data.getMatrix();
+     matrix::Matrix matrix = *data.getMatrix();
 
-     std::array<std::array<int, PLAYERS_NUMBER>, 8> points=
+     std::array<std::array<int, matrix::PLAYERS_NUMBER>, 8> points=
              {{
                       { 4, 4, 4 },
                       { 3, 3, 9 },
@@ -25,9 +25,9 @@ TEST(constructor_tests, game_data_constructor)
                       { 1, 1, 1 }
               }};
 
-     std::array<std::array<int, PLAYERS_NUMBER>, 8> resultingMatrix = *matrix.getMatrix();
+     std::array<std::array<int, matrix::PLAYERS_NUMBER>, 8> resultingMatrix = *matrix.getMatrix();
 
-     const int row = 8, column = PLAYERS_NUMBER;
+     const int row = 8, column = matrix::PLAYERS_NUMBER;
 
      for (int i = 0; i < row; i++)
          for (int j = 0; j < column; j++)

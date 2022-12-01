@@ -19,7 +19,7 @@ const std::string GameData::getConfigs()
     return configs;
 }
 
-const Matrix* GameData::getMatrix()
+const matrix::Matrix* GameData::getMatrix()
 {
     return &matrix;
 }
@@ -31,7 +31,7 @@ void GameData::setStrategiesNames(const std::vector<std::string> strategiesNames
 
 GameData::GameData(std::vector<std::string> strategiesNames, int steps, std::string configs, std::string matrixFileName)
 {
-    if (strategiesNames.size() < PLAYERS_NUMBER)
+    if (strategiesNames.size() < matrix::PLAYERS_NUMBER)
     {
         throw StrategyCountException(strategiesNames);
     }
@@ -41,7 +41,7 @@ GameData::GameData(std::vector<std::string> strategiesNames, int steps, std::str
         throw WrongStepsValue(steps);
     }
 
-    Matrix matrix(matrixFileName);
+    matrix::Matrix matrix(matrixFileName);
     this->matrix = matrix;
 
     this->strategiesNames = strategiesNames;

@@ -2,13 +2,12 @@
 #define FAST_MODE_H
 
 #include "mode.h"
-using namespace mode;
 
-class FastMode : public Mode
+class FastMode : public mode::Mode
 {
 public:
-    FastMode(GameData *gameData);
-    std::array<int, PLAYERS_NUMBER> start() override;
+    FastMode(gameData::GameData *gameData);
+    std::array<int, matrix::PLAYERS_NUMBER> start() override;
 
 private:
     void printTotalSums();

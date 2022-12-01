@@ -31,7 +31,7 @@ const std::array<std::array<int, PLAYERS_NUMBER>, 8>* Matrix::getMatrix()
     return &matrix;
 }
 
-const std::array<int, PLAYERS_NUMBER>* Matrix::getRow(std::array<Move, PLAYERS_NUMBER> votes)
+const std::array<int, PLAYERS_NUMBER>* Matrix::getRow(std::array<strategy::Move, PLAYERS_NUMBER> votes)
 {
     int row = 0;
 

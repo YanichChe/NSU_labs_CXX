@@ -2,13 +2,12 @@
 #define ALWAYS_DEFECT_H
 
 #include "strategy.h"
-using namespace strategy;
 
-class AlwaysDefect : public Strategy
+class AlwaysDefect : public strategy::Strategy
 {
 public:
     AlwaysDefect() = default;
-    Move algorithm() override;
+    strategy::Move algorithm() override;
 };
 
 #endif

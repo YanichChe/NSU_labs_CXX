@@ -2,14 +2,14 @@
 
 using namespace mode;
 
-Mode::Mode(GameData *data)
+Mode::Mode(gameData::GameData *data)
 {
     strategyNames = *data->getStrategiesNames();
     steps = data->getSteps();
     configs = data->getConfigs();
     matrix = *data->getMatrix();
 
-    StrategyFactory strategyFactory;
+    strategyFactory::StrategyFactory strategyFactory;
 
     for (int i = 0; i < strategyNames.size(); i++)
     {
@@ -17,11 +17,11 @@ Mode::Mode(GameData *data)
     }
 }
 
-const std::array<Move, PLAYERS_NUMBER> Mode::getVotes()
+const std::array<strategy::Move, matrix::PLAYERS_NUMBER> Mode::getVotes()
 {
-    std::array<Move, PLAYERS_NUMBER> results;
+    std::array<strategy::Move, matrix::PLAYERS_NUMBER> results;
 
-    for (int i = 0; i < PLAYERS_NUMBER; i++)
+    for (int i = 0; i < matrix::PLAYERS_NUMBER; i++)
     {
         results[i] = strategies[i]->algorithm();
     }
@@ -29,22 +29,22 @@ const std::array<Move, PLAYERS_NUMBER> Mode::getVotes()
     return results;
 }
 
-void Mode::updateTotalSums(std::array<Move, PLAYERS_NUMBER> results)
+void Mode::updateTotalSums(std::array<strategy::Move, matrix::PLAYERS_NUMBER> results)
 {
-    std::array<int, PLAYERS_NUMBER> pointsArray = *matrix.getRow(results);
-    for (int i = 0; i < PLAYERS_NUMBER; i++)
+    std::array<int, matrix::PLAYERS_NUMBER> pointsArray = *matrix.getRow(results);
+    for (int i = 0; i < matrix::PLAYERS_NUMBER; i++)
     {
         totalSums[i] += pointsArray[i];
     }
 }
 
-void Mode::updateStrategies(std::array<Move, 3> results)
+void Mode::updateStrategies(std::array<strategy::Move, 3> results)
 {
-    for (int i = 0; i < PLAYERS_NUMBER; i++)
+    for (int i = 0; i < matrix::PLAYERS_NUMBER; i++)
     {
-        std::array<Move, PLAYERS_NUMBER - 1> otherResults;
+        std::array<strategy::Move, matrix::PLAYERS_NUMBER - 1> otherResults;
         int index = 0;
-        for (int j = 0; j < PLAYERS_NUMBER; j++)
+        for (int j = 0; j < matrix::PLAYERS_NUMBER; j++)
         {
             if (i != j) otherResults[index++] = results[j];
         }

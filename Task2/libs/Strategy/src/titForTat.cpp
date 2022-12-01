@@ -1,15 +1,15 @@
 #include "titForTat.h"
 
-void TitForTat::updateStrategyData(const std::array<Move, 2> results)
+void TitForTat::updateStrategyData(const std::array<strategy::Move, 2> results)
 {
     this->results = results;
 }
 
-Move TitForTat::algorithm()
+strategy::Move TitForTat::algorithm()
 {
-    if (results[0] == D || results[1] == D)
+    if (results[0] == strategy::D || results[1] == strategy::D)
     {
-        return D;
+        return strategy::D;
     }
-    return C;
+    return strategy::C;
 }

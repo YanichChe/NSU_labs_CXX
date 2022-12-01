@@ -1,6 +1,6 @@
 #include "tournament.h"
 
-TournamentMode::TournamentMode(GameData *gameData) : Mode(gameData)
+TournamentMode::TournamentMode(gameData::GameData *gameData) : Mode(gameData)
 {
     for (int i = 0; i < strategyNames.size(); i++)
     {
@@ -13,11 +13,11 @@ void TournamentMode::createCombinations(const std::vector<std::string> strategyN
 {
     int strategyCount = strategyNames.size();
     std::vector<bool> combinations(strategyCount);
-    std::fill(combinations.begin(), combinations.begin() + PLAYERS_NUMBER, true);
+    std::fill(combinations.begin(), combinations.begin() + matrix::PLAYERS_NUMBER, true);
 
     do
     {
-        std::array<std::string, PLAYERS_NUMBER> combination;
+        std::array<std::string, matrix::PLAYERS_NUMBER> combination;
         int index = 0;
         for (int i = 0; i < strategyCount; ++i)
         {
@@ -72,7 +72,7 @@ void TournamentMode::printResults()
     std::cout << "---------------------------------" << std::endl;
 }
 
-std::array<int, PLAYERS_NUMBER> TournamentMode::start()
+std::array<int, matrix::PLAYERS_NUMBER> TournamentMode::start()
 {
     createCombinations(strategyNames);
 
@@ -82,11 +82,11 @@ std::array<int, PLAYERS_NUMBER> TournamentMode::start()
         std::vector<std::string> currentStrategiesNames = {combinations[i][0], combinations[i][1], combinations[i][2]};
         data->setStrategiesNames(currentStrategiesNames);
 
-        ModeFactory modeFactory;
+        modeFactory::ModeFactory modeFactory;
         ModePointer fast = modeFactory.create("fast", data);
 
-        std::array<int, PLAYERS_NUMBER> currentPoints = fast->start();
-        for (int j = 0; j < PLAYERS_NUMBER; j++)
+        std::array<int, matrix::PLAYERS_NUMBER> currentPoints = fast->start();
+        for (int j = 0; j < matrix::PLAYERS_NUMBER; j++)
         {
             updateTotalPoints(currentStrategiesNames[j], currentPoints[j]);
         }

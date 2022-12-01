@@ -3,19 +3,18 @@
 
 #include "mode.h"
 #include <iomanip>
-using namespace mode;
 
 const std::string QUIT = "quit";
 const std::string STEP = "step";
 
-class DetailedMode : public Mode
+class DetailedMode : public mode::Mode
 {
 public:
-    DetailedMode(GameData *gameData);
-    std::array<int, PLAYERS_NUMBER> start() override;
+    DetailedMode(gameData::GameData *gameData);
+    std::array<int, matrix::PLAYERS_NUMBER> start() override;
 
 private:
-    void printCurrentSums(const std::array<Move, PLAYERS_NUMBER> results);
+    void printCurrentSums(const std::array<strategy::Move, matrix::PLAYERS_NUMBER> results);
 };
 
 #endif

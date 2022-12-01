@@ -1,5 +1,7 @@
 #include "strategyFactory.h"
 
+using namespace strategyFactory;
+
 StrategyPointer StrategyFactory::createStrategy(const std::string strategyName, const std::string configs)
 {
     if (strategyName == "alwaysCooperate")      return std::make_unique<AlwaysCooperate>();

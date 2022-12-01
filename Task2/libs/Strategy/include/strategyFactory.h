@@ -13,12 +13,12 @@
 #include "softGrudger.h"
 #include <exception>
 
-using StrategyPointer = std::unique_ptr<Strategy>;
+namespace strategyFactory {
+    using StrategyPointer = std::unique_ptr<strategy::Strategy>;
 
-class StrategyFactory
-{
-public:
-    StrategyPointer createStrategy(const std::string strategyName, const std::string configs);
-};
-
+    class StrategyFactory {
+    public:
+        StrategyPointer createStrategy(const std::string strategyName, const std::string configs);
+    };
+}
 #endif

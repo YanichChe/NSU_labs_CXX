@@ -1,5 +1,7 @@
 #include "modeFactory.h"
 
+using namespace modeFactory;
+
 NotFoundMode ::NotFoundMode(const std::string &mode) :
                             std::invalid_argument(mode + " not found mode") {}
 

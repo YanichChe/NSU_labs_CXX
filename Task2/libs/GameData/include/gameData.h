@@ -4,7 +4,6 @@
 #include "matrix.h"
 #include <time.h>
 
-using namespace matrix;
 namespace gameData {
     const std::string MATRIX_FILE_PATH = "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt";
 
@@ -30,7 +29,7 @@ namespace gameData {
 
         const std::string getConfigs();
 
-        const Matrix* getMatrix();
+        const matrix::Matrix* getMatrix();
 
         void setStrategiesNames(const std::vector<std::string> strategiesNames);
 
@@ -38,7 +37,7 @@ namespace gameData {
         std::vector<std::string> strategiesNames;
         int steps;
         std::string configs;
-        Matrix matrix;
+        matrix::Matrix matrix;
     };
 }
 #endif // TASK2_GAMEDATA_H

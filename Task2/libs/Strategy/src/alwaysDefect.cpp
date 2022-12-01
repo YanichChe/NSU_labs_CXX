@@ -1,6 +1,6 @@
 #include "alwaysDefect.h"
 
-Move AlwaysDefect::algorithm()
+strategy::Move AlwaysDefect::algorithm()
 {
-    return D;
+    return strategy::D;
 }
