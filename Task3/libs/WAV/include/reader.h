@@ -71,7 +71,7 @@ public:
     Reader(){};
     ~Reader(){};
     void load(const std::string path);
-    void readSample(int16_t *buffer);
+    bool readSample(int16_t *buffer);
 
 private:
     WAV wav;

@@ -52,10 +52,12 @@ void Reader::load(const std::string path)
     checkInput();
 }
 
-void Reader::readSample(int16_t *buffer)
+bool Reader::readSample(int16_t *buffer)
 {
     static const uint16_t bufferSize = wav.samplesPerSec;
     inputFile.read((char*)buffer, bufferSize / (sizeof buffer[0]));
+    if (inputFile.gcount() == 0) return true;
+    return false;
 }
 
 bool Reader::checkInput()
