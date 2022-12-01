@@ -192,11 +192,6 @@ bool isDigit(std::string str)
 {
     for (int i = 0; i < str.size(); i++)
     {
-        if (i == 0 && str[i] == '-')
-        {
-            return true;
-        }
-
         if (str[i] > '9' || str[i] < '0')
         {
             return false;
