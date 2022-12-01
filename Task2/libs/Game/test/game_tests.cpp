@@ -4,7 +4,7 @@
 TEST(constructor_tests, fast_mode)
 {
     std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random"};
-    gameData::GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    gameData::GameData data(strategiesNames, 5, "meow", "points.txt");
 
     modeFactory::ModeFactory modeFactory;
     ModePointer fast = modeFactory.create("fast", &data);
@@ -15,7 +15,7 @@ TEST(constructor_tests, fast_mode)
 TEST(constructor_tests, tournament_mode)
 {
     std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random", "titForTat", "softGrudger"};
-    gameData::GameData data(strategiesNames, 10, "C:/Users/Yana228/LABS_NSU/Task2/configFiles/", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    gameData::GameData data(strategiesNames, 10, "../../../configFiles/", "points.txt");
 
     modeFactory::ModeFactory modeFactory;
     ModePointer tournament = modeFactory.create("tournament", &data);

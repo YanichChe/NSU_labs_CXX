@@ -4,7 +4,7 @@
 using namespace matrix;
 TEST(constructor_tests, base_file)
 {
-    Matrix matrix("C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    Matrix matrix("points.txt");
 
     std::array<std::array<int, PLAYERS_NUMBER>, 8> data =
         {{{4, 4, 4},

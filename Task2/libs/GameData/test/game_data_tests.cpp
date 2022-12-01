@@ -5,7 +5,7 @@ using namespace gameData;
 TEST(constructor_tests, game_data_constructor)
 {
     std::vector<std::string> strategiesNames = {"alwaysCooperate", "alwaysDefect", "random"};
-    GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+    GameData data(strategiesNames, 5, "meow", "points.txt");
 
     EXPECT_EQ((*data.getStrategiesNames())[0], "alwaysCooperate");
     EXPECT_EQ(data.getSteps(), 5);
@@ -40,7 +40,7 @@ TEST(constructor_tests, few_strategies_names)
 
     try
     {
-        GameData data(strategiesNames, 5, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+        GameData data(strategiesNames, 5, "meow", "points.txt");
     }
     catch (const StrategyCountException &exception)
     {
@@ -54,7 +54,7 @@ TEST(constructor_tests, wrong_steps_value)
 
     try
     {
-        GameData data(strategiesNames, 0, "meow", "C:/Users/Yana228/LABS_NSU/Task2/libs/GameData/points.txt");
+        GameData data(strategiesNames, 0, "meow", "points.txt");
     }
     catch (const WrongStepsValue &exception)
     {
