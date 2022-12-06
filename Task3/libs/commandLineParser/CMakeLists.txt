@@ -1,4 +1,4 @@
-set(LIBRARY_NAME CommandLineParser)
+set(LIBRARY_NAME commandLineParser)
 set(LIBRARY_HEADERS_DIR include)
 set(LIBRARY_HEADERS include/commandLineParser.h)
 set(LIBRARY_SOURCE src/commandLineParser.cpp)
