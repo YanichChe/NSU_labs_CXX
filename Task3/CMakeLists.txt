@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 set(PROJECT_NAME Task3)
 set(SOURCE src/main.cpp)
 set(LIBRARY_DIR libs)
-set(LIBRARY WAV CommandLineParser)
+set(LIBRARY WAV commandLineParser converter soundProcessor)
 
 project(${PROJECT_NAME} CXX)
 
