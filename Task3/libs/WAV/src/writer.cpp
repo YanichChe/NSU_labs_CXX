@@ -2,17 +2,17 @@
 
 Writer::Writer(const std::string path)
 {
-    this->path = path;
     outputFile.open(path, std::ios_base::binary);
+    outputFile.seekp(TOTAL_HEADER_SIZE, std::fstream::cur);
 }
 
 void Writer::writeHeader()
 {
     outputFile.seekp(0, std::ios::beg);
 
-    Header RIFFHeader{RIFF_CHUNK_ID, TOTAL_HEADER_SIZE - BYTE_SIZE + (uint32_t)outputFile.tellp()};
+    Header RIFFHeader{RIFF_CHUNK_ID, (uint32_t)outputFile.tellp() - BYTE_SIZE};
     Header FMTHeader{FMT_CHUNK_ID, FMT_CHUNK_SIZE};
-    Header dataHeader{DATA_CHUNK_ID, (uint32_t)outputFile.tellp()};
+    Header dataHeader{DATA_CHUNK_ID, (uint32_t)outputFile.tellp() - TOTAL_HEADER_SIZE};
 
     wav.RIFFHeader = RIFFHeader;
     wav.WAVEFormat = WAVE_FORMAT;
@@ -23,13 +23,13 @@ void Writer::writeHeader()
     wav.bytesPerSec = BYTES_PER_SEC;
     wav.blockAlign = BLOCK_ALIGN;
     wav.bitsPerSample = BITS_PER_SAMPLE;
+    wav.dataHeader = dataHeader;
 
     outputFile.write((const char *)&wav, sizeof(WAV));
 
 }
 
-void Writer::writeSample(int16_t *buffer)
+void Writer::writeSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer)
 {
-    static const uint16_t bufferSize = wav.samplesPerSec;
-    outputFile.write((char*)buffer, bufferSize / (sizeof buffer[0]));
+    outputFile.write((char*)buffer, sizeof(buffer));
 }

@@ -29,7 +29,6 @@ struct Header
     uint32_t ChunkSize;
 };
 
-
 struct WAV
 {
     /* RIFF Chunk  */
@@ -48,7 +47,6 @@ struct WAV
 
     /* data sub-chunk */
     Header dataHeader;
-
 };
 
 #endif // LAB1_WAV_H

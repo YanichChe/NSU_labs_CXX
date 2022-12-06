@@ -10,12 +10,11 @@ class Writer {
 public:
     Writer(const std::string path);
     ~Writer(){};
-    void writeSample(int16_t *buffer);
+    void writeSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer);
+    void writeHeader();
 private:
     WAV wav;
     std::ofstream outputFile;
-    void writeHeader();
-    std::string path;
 };
 
 #endif //TASK3_WRITER_H
