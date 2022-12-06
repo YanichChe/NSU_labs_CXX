@@ -71,12 +71,12 @@ public:
     Reader(){};
     ~Reader(){};
     void load(const std::string path);
-    bool readSample(int16_t *buffer);
+    bool readSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer);
 
 private:
     WAV wav;
     std::ifstream inputFile;
-    bool checkInput();
+    void checkInput();
 };
 
 #endif // LAB1_READER_H

@@ -48,19 +48,24 @@ void Reader::load(const std::string path)
         wav.dataHeader.ChunkSize = headerChunk.ChunkSize;
     }
 
-
-    checkInput();
+    try
+    {
+        checkInput();
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what();
+    }
 }
 
-bool Reader::readSample(int16_t *buffer)
+bool Reader::readSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer)
 {
-    static const uint16_t bufferSize = wav.samplesPerSec;
-    inputFile.read((char*)buffer, bufferSize / (sizeof buffer[0]));
-    if (inputFile.gcount() == 0) return true;
-    return false;
+    inputFile.read((char*)buffer, sizeof(buffer));
+    if (inputFile.gcount() == 0) return false;
+    return true;
 }
 
-bool Reader::checkInput()
+void Reader::checkInput()
 {
     if (wav.RIFFHeader.ChunkId != RIFF_CHUNK_ID)        throw WrongRIFFChunkId(wav.RIFFHeader.ChunkId);
     else if (wav.WAVEFormat != WAVE_FORMAT)             throw WrongWAVEFormat(wav.WAVEFormat);
@@ -72,7 +77,5 @@ bool Reader::checkInput()
     else if (wav.bitsPerSample != BITS_PER_SAMPLE)      throw WrongBitesPerSample(wav.bitsPerSample);
     else if (wav.blockAlign != BLOCK_ALIGN)             throw WrongBlockAlign(wav.blockAlign);
     else if (wav.dataHeader.ChunkId!= DATA_CHUNK_ID)    throw WrongDataChunkId(wav.dataHeader.ChunkId);
-
-    return true;
 }
 
