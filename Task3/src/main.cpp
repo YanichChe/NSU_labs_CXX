@@ -1,21 +1,23 @@
 #include <cstdlib>
-#include <iostream>
-#include <string>
-#include <fstream>
-#include "../libs/WAV/include/reader.h"
-#include "../libs/WAV/include/writer.h"
+#include "commandLineParser.h"
+#include "soundProcessor.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    Reader reader;
-    const std::string path = "C:/Users/Yana228/LABS_NSU/Task3/examples/district_four.wav";
-    reader.load(path);
+    Options options;
+    if (!setOptionsValue(argc, argv, options))
+    {
+        return EXIT_SUCCESS;
+    }
 
-    Writer writer();
-
-
-
-
+    try {
+        soundProcessor::SoundProcessor soundProcessor(options.configFile, options.outputFile, options.inputFiles);
+        soundProcessor.start();
+    }
+    catch(const soundProcessor::NotFileInput& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 
     return EXIT_SUCCESS;
 }
