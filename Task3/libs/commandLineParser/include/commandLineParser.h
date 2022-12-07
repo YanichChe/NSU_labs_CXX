@@ -14,9 +14,12 @@ namespace po = boost::program_options;
 struct Options
 {
     std::string configFile;
+    std::string outputFile;
+    std::vector<std::string> inputFiles;
+
 };
 
-bool SetOptionsValue(int argc, char **argv, Options &options);
+bool setOptionsValue(int argc, char **argv, Options &options);
 
 #endif
 
