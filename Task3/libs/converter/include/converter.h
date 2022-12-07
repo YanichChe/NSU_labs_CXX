@@ -4,14 +4,22 @@
 #include <cstdlib>
 #include <vector>
 #include <array>
+#include <stdexcept>
 #include "wav.h"
 
-using SampleBuffer = std::array<int16_t, SAMPLES_PER_SEC>;
-class Converter
-{
-public:
-    virtual ~Converter() = default;
-    virtual void convert(std::vector<SampleBuffer> current_samples,
-                         const std::vector<SampleBuffer> original_samples) = 0;
-};
+namespace converter {
+
+    class WrongTime: public std::invalid_argument{
+    public:
+        WrongTime(const int time) : std::invalid_argument(std::to_string(time)+ " is wrong time format"){};
+    };
+
+    class Converter {
+    public:
+        virtual ~Converter() = default;
+
+        virtual void convert(std::vector<wav::SampleBuffer> &current_samples,
+                             const std::vector<wav::SampleVector> original_samples) = 0;
+    };
+}
 #endif //TASK3_CONVERTER_H
