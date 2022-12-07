@@ -6,15 +6,20 @@
 #include <fstream>
 #include <exception>
 
-class Writer {
-public:
-    Writer(const std::string path);
-    ~Writer(){};
-    void writeSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer);
-    void writeHeader();
-private:
-    WAV wav;
-    std::ofstream outputFile;
-};
+namespace writer {
+    class Writer {
+    public:
+        Writer(const std::string path);
 
+        ~Writer() {};
+
+        void writeSample(const wav::SampleBuffer *buffer);
+
+        void writeHeader();
+
+    private:
+        wav::WAV wav;
+        std::ofstream outputFile;
+    };
+}
 #endif //TASK3_WRITER_H

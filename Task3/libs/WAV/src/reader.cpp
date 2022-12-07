@@ -1,5 +1,7 @@
 #include "reader.h"
 
+using namespace reader;
+
 // INPUT VALUES ERRORS  --------------------------------------------------------------
 WrongRIFFChunkId ::WrongRIFFChunkId(const uint32_t RIFFChunkId) : 
 std::invalid_argument(std::to_string(RIFFChunkId) + " is not RIFF") {}
@@ -34,22 +36,22 @@ std::invalid_argument(std::to_string(dataChunkId) + " is not data") {}
 //----------------------------------------------------------------------------------
 void Reader::load(const std::string path)
 {
-    inputFile.open(path, std::ios_base::binary);
-
-    inputFile.read((char*)&wav, sizeof(WAV));
-
-    Header headerChunk;
-
-    while(wav.dataHeader.ChunkId != DATA_CHUNK_ID)
-    {
-        inputFile.seekg(wav.dataHeader.ChunkSize, std::fstream::cur);
-        inputFile.read((char*)&headerChunk, sizeof(Header));
-        wav.dataHeader.ChunkId = headerChunk.ChunkId;
-        wav.dataHeader.ChunkSize = headerChunk.ChunkSize;
-    }
-
     try
-    {
+        {
+        inputFile.open(path, std::ios_base::binary);
+
+        inputFile.read((char*)&wav, sizeof(wav::WAV));
+
+        wav::Header headerChunk;
+
+        while(wav.dataHeader.ChunkId != wav::DATA_CHUNK_ID)
+        {
+            inputFile.seekg(wav.dataHeader.ChunkSize, std::fstream::cur);
+            inputFile.read((char*)&headerChunk, sizeof(wav::Header));
+            wav.dataHeader.ChunkId = headerChunk.ChunkId;
+            wav.dataHeader.ChunkSize = headerChunk.ChunkSize;
+        }
+
         checkInput();
     }
     catch (const std::exception& e)
@@ -58,24 +60,24 @@ void Reader::load(const std::string path)
     }
 }
 
-bool Reader::readSample(std::array<int16_t, SAMPLES_PER_SEC> *buffer)
+bool Reader::readSample(wav::SampleBuffer *buffer)
 {
-    inputFile.read((char*)buffer, sizeof(buffer));
+    inputFile.read((char*)buffer, sizeof(wav::SampleBuffer));
     if (inputFile.gcount() == 0) return false;
     return true;
 }
 
 void Reader::checkInput()
 {
-    if (wav.RIFFHeader.ChunkId != RIFF_CHUNK_ID)        throw WrongRIFFChunkId(wav.RIFFHeader.ChunkId);
-    else if (wav.WAVEFormat != WAVE_FORMAT)             throw WrongWAVEFormat(wav.WAVEFormat);
-    else if (wav.FMTHeader.ChunkId != FMT_CHUNK_ID)     throw WrongFMTChunkId(wav.FMTHeader.ChunkId);
-    else if (wav.audioFormat != AUDIO_FORMAT)           throw WrongAudioFormat(wav.audioFormat);
-    else if (wav.numberChannels != NUMBER_CHANNELS)     throw WrongNumberChannels(wav.numberChannels);
-    else if (wav.samplesPerSec != SAMPLES_PER_SEC)      throw WrongSamplesPerSec(wav.samplesPerSec);
-    else if (wav.bytesPerSec != BYTES_PER_SEC)          throw WrongBytesPerSec(wav.bytesPerSec);
-    else if (wav.bitsPerSample != BITS_PER_SAMPLE)      throw WrongBitesPerSample(wav.bitsPerSample);
-    else if (wav.blockAlign != BLOCK_ALIGN)             throw WrongBlockAlign(wav.blockAlign);
-    else if (wav.dataHeader.ChunkId!= DATA_CHUNK_ID)    throw WrongDataChunkId(wav.dataHeader.ChunkId);
+    if (wav.RIFFHeader.ChunkId != wav::RIFF_CHUNK_ID)        throw WrongRIFFChunkId(wav.RIFFHeader.ChunkId);
+    else if (wav.WAVEFormat != wav::WAVE_FORMAT)             throw WrongWAVEFormat(wav.WAVEFormat);
+    else if (wav.FMTHeader.ChunkId != wav::FMT_CHUNK_ID)     throw WrongFMTChunkId(wav.FMTHeader.ChunkId);
+    else if (wav.audioFormat != wav::AUDIO_FORMAT)           throw WrongAudioFormat(wav.audioFormat);
+    else if (wav.numberChannels != wav::NUMBER_CHANNELS)     throw WrongNumberChannels(wav.numberChannels);
+    else if (wav.samplesPerSec != wav::SAMPLES_PER_SEC)      throw WrongSamplesPerSec(wav.samplesPerSec);
+    else if (wav.bytesPerSec != wav::BYTES_PER_SEC)          throw WrongBytesPerSec(wav.bytesPerSec);
+    else if (wav.bitsPerSample != wav::BITS_PER_SAMPLE)      throw WrongBitesPerSample(wav.bitsPerSample);
+    else if (wav.blockAlign != wav::BLOCK_ALIGN)             throw WrongBlockAlign(wav.blockAlign);
+    else if (wav.dataHeader.ChunkId!= wav::DATA_CHUNK_ID)    throw WrongDataChunkId(wav.dataHeader.ChunkId);
 }
 
