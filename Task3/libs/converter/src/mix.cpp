@@ -12,19 +12,17 @@ Mix::Mix(const std::vector<std::string> parameters)
     this->start = std::stoi(parameters[2]);
 }
 
-void Mix::convert(std::vector<wav::SampleBuffer>& current_samples,
+void Mix::convert(wav::SampleVector & current_samples,
                   const std::vector<wav::SampleVector> original_samples)
 {
     if (indexFile < 0 || indexFile >= original_samples.size())      throw WrongFileIndex(indexFile);
     if (start >= current_samples.size())                            throw converter::WrongTime(start);
 
-    for (int i = start; i < current_samples.size(); i++)
+    for (int i = start; i < current_samples.size() && i < original_samples[indexFile].size(); i++)
     {
-        current_samples.pop_back();
-    }
-
-    for (int i = 0; i < original_samples[indexFile].size(); i++)
-    {
-        current_samples.push_back(original_samples[indexFile][i]);
+        for (int  j = 0; j < wav::SAMPLES_PER_SEC; j++)
+        {
+            current_samples[i][j] = (current_samples[i][j] / 2 + original_samples[indexFile][i][j] / 2);
+        }
     }
 }
