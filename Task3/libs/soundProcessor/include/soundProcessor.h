@@ -6,6 +6,7 @@
 #include "writer.h"
 #include <regex>
 #include <stdexcept>
+#include <filesystem>
 
 namespace soundProcessor {
 

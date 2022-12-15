@@ -4,9 +4,16 @@ using namespace soundProcessor;
 
 SoundProcessor::SoundProcessor(std::string configFile, std::string outputFile, std::vector<std::string> inputFiles)
 {
-    this->configFile = configFile;
-    this->outputFile = outputFile;
-    this->inputFiles = inputFiles;
+    std::filesystem::path cwd = std::filesystem::current_path();
+    std::string path = cwd.string() + "\\..\\" + "examples\\";
+
+    this->configFile = path + configFile;
+    this->outputFile = path + outputFile;
+
+    for (int i = 0; i < inputFiles.size(); i++)
+    {
+        this->inputFiles.push_back(path + inputFiles[i]);
+    }
 
     if (inputFiles.size() == 0) throw NotFileInput();
     fillInputSamples();
