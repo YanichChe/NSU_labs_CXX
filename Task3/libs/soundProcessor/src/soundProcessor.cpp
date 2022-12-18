@@ -6,6 +6,7 @@ SoundProcessor::SoundProcessor(std::string configFile, std::string outputFile, s
 {
     std::filesystem::path cwd = std::filesystem::current_path();
     std::string path = cwd.string() + "\\..\\" + "examples\\";
+    std::cout << path << std::endl;
 
     this->configFile = path + configFile;
     this->outputFile = path + outputFile;

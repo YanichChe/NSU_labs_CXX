@@ -1,14 +1,19 @@
 #include "gtest/gtest.h"
 #include "reader.h"
 #include "writer.h"
+#include <filesystem>
 
 TEST(constructor_tests, copy_file) {
+
+    std::filesystem::path cwd = std::filesystem::current_path();
+    std::string pathFolder = cwd.string() + "\\..\\" + "examples\\";
+    const std::string path = pathFolder + "district_four.wav";
+
     {
         reader::Reader reader;
-        const std::string path = "C:/Users/Yana228/LABS_NSU/Task3/examples/district_four.wav";
         reader.load(path);
 
-        const std::string path1 = "C:/Users/Yana228/LABS_NSU/Task3/examples/a.wav";
+        const std::string path1 = pathFolder + "a.wav";
         writer::Writer writer(path1);
 
         while (true) {
@@ -22,8 +27,8 @@ TEST(constructor_tests, copy_file) {
 
     reader::Reader reader1;
     reader::Reader reader2;
-    reader1.load("C:/Users/Yana228/LABS_NSU/Task3/examples/district_four.wav");
-    reader2.load("C:/Users/Yana228/LABS_NSU/Task3/examples/a.wav");
+    reader1.load(pathFolder + "district_four.wav");
+    reader2.load(pathFolder + "a.wav");
 
     while (true)
     {

@@ -17,13 +17,13 @@ TEST(constructor_tests, soundProcessor)
 TEST(start_test, correct)
 {
     std::vector<std::string> inputFiles;
-    inputFiles.push_back("C:Users/Yana228/LABS_NSU/Task3/examples/district_four.wav");
-    inputFiles.push_back("C:Users/Yana228/LABS_NSU/Task3/examples/severe_tire_damage.wav");
+    inputFiles.push_back("district_four.wav");
+    inputFiles.push_back("severe_tire_damage.wav");
 
     EXPECT_NO_THROW
     ({
-        soundProcessor::SoundProcessor soundProcessor("C:Users/Yana228/LABS_NSU/Task3/examples/config.txt",
-                                                      "C:Users/Yana228/LABS_NSU/Task3/examples/a.wav",
+        soundProcessor::SoundProcessor soundProcessor("config.txt",
+                                                      "a.wav",
                                                       inputFiles);
 
         soundProcessor.start();
